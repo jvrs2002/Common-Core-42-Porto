@@ -1,28 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/10 12:53:50 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/10 16:39:41 by joao-vri         ###   ########.fr       */
+/*   Created: 2024/04/10 17:01:40 by joao-vri          #+#    #+#             */
+/*   Updated: 2024/04/10 17:05:47 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <string.h>
-//#include <stdio.h>
+#include <stdio.h>
 
-size_t strlen(const char *str)
-{
-    size_t i;
-
-    i = 0;
-    while(str[i])
-        i++;
-    return i;
-}
-/*int main()
-{
-    printf("%lu", ft_strlen("teste"));
-}*/
+int isalnum(char *i)

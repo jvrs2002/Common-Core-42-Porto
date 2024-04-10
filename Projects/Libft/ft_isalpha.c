@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/10 12:53:50 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/10 16:39:41 by joao-vri         ###   ########.fr       */
+/*   Created: 2024/04/10 16:01:09 by joao-vri          #+#    #+#             */
+/*   Updated: 2024/04/10 16:47:01 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <string.h>
 //#include <stdio.h>
 
-size_t strlen(const char *str)
+int isalpha(int c)
 {
-    size_t i;
-
-    i = 0;
-    while(str[i])
-        i++;
-    return i;
+    if (c > 64 && c < 91) || (c > 96 && c < 123)
+        return 1;
+    return 0;
 }
-/*int main()
+/*int main(void)
 {
-    printf("%lu", ft_strlen("teste"));
+    printf("%i", isalpha('d'));
 }*/
