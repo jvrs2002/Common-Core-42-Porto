@@ -6,13 +6,14 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 17:01:40 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/11 12:36:17 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/04/11 16:43:09 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <stdio.h>
 
-int ft_isalnum(char c){
+int ft_isalnum(char c)
+{
     if ((c > 47 && c < 58) || (c > 64 && c < 91) || (c > 96 && c < 123))
         return 1;
     return 0;

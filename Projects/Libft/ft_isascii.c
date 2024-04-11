@@ -6,13 +6,14 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 11:47:05 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/11 12:10:16 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/04/11 16:43:11 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <stdio.h>
 
-int ft_isascii(char c){
+int ft_isascii(char c)
+{
     if (c >= 0 && c <= 122)
         return 1;
     return 0;

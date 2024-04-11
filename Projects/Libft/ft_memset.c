@@ -6,13 +6,14 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 14:38:38 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/11 16:21:53 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/04/11 16:43:19 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <stdio.h>
 
-char    *ft_memset(void *s, int c, size_t n){
+char    *ft_memset(void *s, int c, size_t n)
+{
     unsigned char    *ptr = s;
 
     while (n > 0){
