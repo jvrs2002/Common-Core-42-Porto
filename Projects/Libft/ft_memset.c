@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/10 16:01:09 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/11 12:35:33 by joao-vri         ###   ########.fr       */
+/*   Created: 2024/04/11 14:38:38 by joao-vri          #+#    #+#             */
+/*   Updated: 2024/04/11 16:13:30 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
+#include <stdio.h>
 
-int ft_isalpha(int c)
-{
-    if (c > 64 && c < 91) || (c > 96 && c < 123)
-        return 1;
-    return 0;
+char    *ft_memset(void *s, int c, size_t n){
+    unsigned char    *ptr = s;
+
+    while (n > 0){
+        *ptr = c;
+        ptr++;
+        n--;
+    }
+    return s;
 }
-/*int main(void)
-{
-    printf("%i", ft_isalpha('d'));
+
+/*int main(void){
+    char str[] = "Hello guys";
+
+
+    char *result = ft_memset(str, 's', 5);
+    printf("%s", result);
 }*/

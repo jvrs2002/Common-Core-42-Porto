@@ -6,19 +6,19 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 16:47:32 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/10 16:54:58 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/04/11 11:46:38 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <stdio.h>
 
-int isdigit (int i)
+int ft_isdigit (int c)
 {
-    if (i > 47 && i < 58)
+    if (c > 47 && c < 58)
         return 1;
     return 0;
 }
 /*int main(void)
 {
-    printf("%i", isdigit('D'));
+    printf("%i", ft_isdigit('D'));
 }*/
