@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/11 14:38:38 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/15 16:37:20 by joao-vri         ###   ########.fr       */
+/*   Created: 2024/04/15 13:54:29 by joao-vri          #+#    #+#             */
+/*   Updated: 2024/04/15 16:12:01 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <stdio.h>
 
-char    *ft_memset(void *s, int c, size_t n)
-{
-    unsigned char    *ptr;
-    
-    ptr = (unsigned char *)s;
-    while (n > 0)
+char    *ft_strrchr(const char *s, int c)
+{    
+    char    *ptr;
+
+    ptr = NULL;
+    while (*s)
     {
-        *ptr = c;
-        ptr++;
-        n--;
+        if (*s == c)
+            ptr = (char *)s;
+        s++;
     }
-    return s;
+    if (c == '\0')
+        return ptr;
+    else if (ptr != NULL)
+        return ptr;
+    return NULL;
 }
 
-/*int main(void){
-    int str[] = "Hello guys";
-
-    char *result = ft_memset(str, 's', 5);
-    printf("%s", result);
+/*int main(void)
+{
+    printf("%s", ft_strrchr("Teste", 't'));
 }*/
