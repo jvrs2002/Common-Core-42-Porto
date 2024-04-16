@@ -6,23 +6,22 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 12:08:43 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/15 14:50:00 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/04/16 10:20:41 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <stdio.h>
 
-void    ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
-    unsigned char    *ptr;
+	unsigned char	*ptr;
 
-    ptr = (unsigned char *) s;
-    
-    while (n--)
-        *ptr++ = 0;
+	ptr = (unsigned char *) s;
+	while (n--)
+		*ptr++ = 0;
 }
 
-/*int main(void)
+/*int	main(void)
 {
-    printf("%s", ft_bzero("Teste T", 6));
+	printf("%s", ft_bzero("Teste T", 6));
 }*/

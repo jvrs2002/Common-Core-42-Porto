@@ -6,19 +6,20 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 16:01:09 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/11 16:43:06 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/04/16 10:17:04 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <stdio.h>
 
-int ft_isalpha(int c)
+int	ft_isalpha(int c)
 {
-    if (c > 64 && c < 91) || (c > 96 && c < 123)
-        return 1;
-    return 0;
+	if ((c > 64 && c < 91) || (c > 96 && c < 123))
+		return (1);
+	return (0);
 }
-/*int main(void)
+
+/*int	main(void)
 {
-    printf("%i", ft_isalpha('d'));
+	printf("%i", ft_isalpha('d'));
 }*/
