@@ -6,13 +6,13 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 14:38:38 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/16 10:19:13 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/04/17 12:12:38 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <stdio.h>
 
-char	*ft_memset(void *s, int c, size_t n)
+void	*ft_memset(void *s, int c, size_t n)
 {
 	unsigned char	*ptr;
 
@@ -26,9 +26,10 @@ char	*ft_memset(void *s, int c, size_t n)
 	return (s);
 }
 
-/*int main(void){
-	int str[] = "Hello guys";
+/*int main(void)
+{
+	char s[] = "Hello guys";
 
-	char *result = ft_memset(str, 's', 5);
+	char *result = ft_memset(s, 't', 5);
 	printf("%s", result);
 }*/
