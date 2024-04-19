@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/18 16:43:01 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/19 11:43:47 by joao-vri         ###   ########.fr       */
+/*   Created: 2024/04/19 14:45:14 by joao-vri          #+#    #+#             */
+/*   Updated: 2024/04/19 15:55:49 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdio.h>
-// #include <string.h>
+#include <stdio.h>
+#include <string.h>
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char	*ptr1;
 	const char	*ptr2;
+	char	*ptr1;
+	char	temp1[n];
+	char	*temp2;
 
-	ptr1 = (char *) dest;
-	ptr2 = (const char *) src;
+	ptr2 = (const char *)src;
+	ptr1 = (char *)dest;
 	while (n-- > 0)
-		*ptr1++ = *ptr2++;
+		*temp2++ = *ptr2++;
+	temp2 = temp1;
+	while (*temp1)
+		*ptr1++ = *temp1++;
 	return (ptr1);
 }
 
-/* int	main(void)
+int	main(void)
 {
-	const char src[42] = "abcde";
-	char dest[42] = "ABCDE";
-
-	printf("Before memcpy dest = %s\n", dest);
-	ft_memcpy(dest, src, 3);
-	printf("After memcpy dest = %s\n", dest);
-} */
+	char	dest[50] = "Tes";
+	char	src[50] = "Teste";
+	ft_memmove(dest, src, 5);
+	printf("%s", dest);
+}

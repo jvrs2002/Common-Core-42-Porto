@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/18 16:43:01 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/19 11:43:47 by joao-vri         ###   ########.fr       */
+/*   Created: 2024/04/19 11:48:29 by joao-vri          #+#    #+#             */
+/*   Updated: 2024/04/19 12:05:22 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // #include <stdio.h>
 // #include <string.h>
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memchr(const void *str, int c, size_t n)
 {
-	char	*ptr1;
-	const char	*ptr2;
+	char	*ptr;
 
-	ptr1 = (char *) dest;
-	ptr2 = (const char *) src;
+	ptr = (char *)str;
 	while (n-- > 0)
-		*ptr1++ = *ptr2++;
-	return (ptr1);
+	{
+		if (*ptr == c)
+			return ((void *)ptr);
+		ptr++;
+	}
+	return (NULL);
 }
 
 /* int	main(void)
 {
-	const char src[42] = "abcde";
-	char dest[42] = "ABCDE";
-
-	printf("Before memcpy dest = %s\n", dest);
-	ft_memcpy(dest, src, 3);
-	printf("After memcpy dest = %s\n", dest);
+	char	*str = ft_memchr("Flamengo", 'm', 4);
+	printf("%s", str);
 } */

@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 14:49:29 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/18 16:56:07 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/04/19 11:42:24 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_strlcat(char *dst, const char *src, size_t size)
 	while (src[i] != '\0' && len + i < size - 1)
 	{
 		dst[len + i] = src[i];
-		i++;
+		++i;
 	}
 	dst[len + i] = '\0';
 	return (len + i);

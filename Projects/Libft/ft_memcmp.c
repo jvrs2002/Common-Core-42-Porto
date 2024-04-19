@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/18 16:43:01 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/19 11:43:47 by joao-vri         ###   ########.fr       */
+/*   Created: 2024/04/19 12:09:51 by joao-vri          #+#    #+#             */
+/*   Updated: 2024/04/19 14:38:00 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // #include <stdio.h>
 // #include <string.h>
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	char	*ptr1;
+	const char	*ptr1;
 	const char	*ptr2;
 
-	ptr1 = (char *) dest;
-	ptr2 = (const char *) src;
+	ptr1 = (const char *)s1;
+	ptr2 = (const char *)s2;
 	while (n-- > 0)
-		*ptr1++ = *ptr2++;
-	return (ptr1);
+	{
+		if (*ptr1 != *ptr2)
+			return (*ptr1 - *ptr2);
+		ptr1++, ptr2++;
+	}
+	return (0);
 }
-
 /* int	main(void)
 {
-	const char src[42] = "abcde";
-	char dest[42] = "ABCDE";
-
-	printf("Before memcpy dest = %s\n", dest);
-	ft_memcpy(dest, src, 3);
-	printf("After memcpy dest = %s\n", dest);
+	printf("%i", ft_memcmp("TeSte", "TestE", 5));
 } */
