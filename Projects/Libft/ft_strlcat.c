@@ -6,12 +6,12 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 14:49:29 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/19 11:42:24 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/04/22 14:39:00 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
-//#include <string.h>
+// #include <stdio.h>
+// #include <string.h>
 
 int	ft_strlcat(char *dst, const char *src, size_t size)
 {
@@ -31,7 +31,7 @@ int	ft_strlcat(char *dst, const char *src, size_t size)
 	return (len + i);
 }
 
-/*int	main(void)
+/* int	main(void)
 {
 	char dst[] = "Hello ";
 	const char *src = "World";
@@ -40,4 +40,4 @@ int	ft_strlcat(char *dst, const char *src, size_t size)
 	printf("%i\n", ft_strlcat(dst, src, size));
 	ft_strlcat(dst, src, size);
 	printf("%s", dst);
-}*/
+} */

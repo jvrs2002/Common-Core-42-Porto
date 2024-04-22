@@ -6,34 +6,41 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 14:45:14 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/19 15:55:49 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/04/22 14:50:03 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+// #include <stdio.h>
+// #include <string.h>
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	const char	*ptr2;
-	char	*ptr1;
-	char	temp1[n];
-	char	*temp2;
+	char		*ptr1;
+	char		*temp;
 
+	temp = NULL;
 	ptr2 = (const char *)src;
 	ptr1 = (char *)dest;
-	while (n-- > 0)
-		*temp2++ = *ptr2++;
-	temp2 = temp1;
-	while (*temp1)
-		*ptr1++ = *temp1++;
-	return (ptr1);
+	if (ptr1 == ptr2)
+		return (dest);
+	if (ptr1 < ptr2)
+		while (n--)
+			*ptr1++ = *ptr2++;
+	else
+	{
+		ptr1 += n;
+		ptr2 += n;
+		while (n--)
+			*(--ptr1) = *(--ptr2);
+	}
+	return (dest);
 }
 
-int	main(void)
+/* int	main(void)
 {
 	char	dest[50] = "Tes";
 	char	src[50] = "Teste";
 	ft_memmove(dest, src, 5);
 	printf("%s", dest);
-}
+} */

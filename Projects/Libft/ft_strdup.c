@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 13:41:25 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/22 15:11:36 by joao-vri         ###   ########.fr       */
+/*   Created: 2024/04/22 14:50:14 by joao-vri          #+#    #+#             */
+/*   Updated: 2024/04/22 15:29:33 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+char	*ft_strdup(const char *src)
 {
-	while (*s1 && *s2 && n > 0)
-	{
-		if (*s1 != *s2)
-			return (*s1 - *s2);
-		n--;
-		s1++;
-		s2++;
-	}
-	return (0);
+	int		len;
+	char	*dup;
+
+	if (src == NULL)
+		return (NULL);
+	len = ft_strlen(src);
+	dup = malloc(sizeof(char *) * (len + 1));
+	while (*src)
+		*dup++ = *src++;
+	*dup = '\0';
+	dup -= len;
+	return (dup);
 }
 
-/*int	main(void)
+/* int	main(int ac, char **av)
 {
-	printf("%i", ft_strncmp("ABCs4d", "ABCsad", 5));
-}*/
+	ac = -ac;
+	printf("%s", ft_strdup(av[1]));
+} */
