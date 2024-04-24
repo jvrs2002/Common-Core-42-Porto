@@ -6,11 +6,11 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 17:01:40 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/16 10:17:17 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:30:58 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
+#include "libft.h"
 
 int	ft_isalnum(char c)
 {

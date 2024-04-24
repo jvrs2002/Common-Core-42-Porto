@@ -6,11 +6,11 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 11:47:05 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/16 10:13:05 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:30:54 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
+#include "libft.h"
 
 int	ft_isascii(char c)
 {

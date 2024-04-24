@@ -6,11 +6,11 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 13:41:25 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/22 15:11:36 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:30:09 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
+#include "libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

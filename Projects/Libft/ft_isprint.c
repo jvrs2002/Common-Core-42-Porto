@@ -6,11 +6,11 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 12:10:49 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/16 10:19:08 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:30:50 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
+#include "libft.h"
 
 int	ft_isprint(char c)
 {

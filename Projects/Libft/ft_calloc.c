@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/18 16:43:01 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/24 15:30:44 by joao-vri         ###   ########.fr       */
+/*   Created: 2024/04/24 09:54:59 by joao-vri          #+#    #+#             */
+/*   Updated: 2024/04/24 15:31:19 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	const char	*ptr2;
-	char		*ptr1;
+	void	*ptr;
 
-	ptr1 = dest;
-	ptr2 = src;
-	if (ptr1 == NULL && ptr2 == NULL)
-		return (NULL);
-	else
-		while (n-- > 0)
-			*ptr1++ = *ptr2++;
-	return (dest);
+	ptr = malloc(size * nmemb);
+	if (ptr != NULL)
+	{
+		ft_memset(ptr, 0, size * nmemb);
+		return (ptr);
+	}
+	return (NULL);
 }
 
 /* int	main(void)
 {
-	char csrc[100] = "Teste123";
-	ft_memcpy(csrc + 5, csrc, strlen(csrc) + 1);
-	printf("%s", csrc);
-	return 0;
+	char	*str1 = (char*)ft_calloc(12, sizeof(char));
+	char	str2[12] = "Teste";
+
+	ft_strcpy(str1, str2);
+	printf("%s", str1);
+
+	free(str1);
+	return (0);
 } */

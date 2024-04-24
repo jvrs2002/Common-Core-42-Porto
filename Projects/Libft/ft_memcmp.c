@@ -6,12 +6,11 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 12:09:51 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/22 13:19:10 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:30:46 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdio.h>
-// #include <string.h>
+#include "libft.h"
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {

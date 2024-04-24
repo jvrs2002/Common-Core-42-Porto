@@ -6,11 +6,11 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:54:29 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/16 12:08:12 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:30:28 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
+#include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {

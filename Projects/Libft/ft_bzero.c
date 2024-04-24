@@ -6,11 +6,11 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 12:08:43 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/16 10:20:41 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:31:21 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {

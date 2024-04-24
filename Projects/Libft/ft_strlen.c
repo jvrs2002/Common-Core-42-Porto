@@ -6,12 +6,11 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 12:53:50 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/17 12:05:56 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:27:34 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <string.h>
-//#include <stdio.h>
+#include "libft.h"
 
 size_t	ft_strlen(const char *c)
 {
@@ -19,7 +18,7 @@ size_t	ft_strlen(const char *c)
 
 	i = 0;
 	while (c[i])
-		i++;
+		++i;
 	return (i);
 }
 

@@ -6,11 +6,11 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 16:01:09 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/16 10:17:04 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:30:56 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
+#include "libft.h"
 
 int	ft_isalpha(int c)
 {

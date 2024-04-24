@@ -6,12 +6,11 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 14:45:14 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/22 14:50:03 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:30:42 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdio.h>
-// #include <string.h>
+#include "libft.h"
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
