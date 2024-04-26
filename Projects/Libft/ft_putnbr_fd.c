@@ -1,42 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 14:49:29 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/26 13:27:46 by joao-vri         ###   ########.fr       */
+/*   Created: 2024/04/26 10:50:50 by joao-vri          #+#    #+#             */
+/*   Updated: 2024/04/26 14:34:37 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+void	ft_putnbr_fd(int nb, int fd)
 {
-	size_t	len;
-	size_t	i;
-
-	i = 0;
-	len = ft_strlen(dst);
-	if (len >= size)
-		return (len + ft_strlen(src));
-	while (src[i] != '\0' && len + i < size - 1)
+	if (nb == -2147483648)
 	{
-		dst[len + i] = src[i];
-		++i;
+		write (fd, "-2147483648", 1);
 	}
-	dst[len + i] = '\0';
-	return (len + i);
+	else
+		if (nb < 0)
+		{
+			ft_putchar_fd('-', fd);
+			nb = -nb;
+		}
+		if (nb > 10)
+			ft_putnbr_fd(nb / 10, fd);
+		ft_putchar_fd((nb % 10 + '0'), fd);
+	return (0);
 }
 
 /* int	main(void)
 {
-	char dst[] = "Hello ";
-	const char *src = "World";
-	size_t size = 9;
-
-	printf("%lu\n", ft_strlcat(dst, src, size));
-	ft_strlcat(dst, src, size);
-	printf("%s", dst);
+	ft_putnbr_fd(-123456, 1);
 } */
