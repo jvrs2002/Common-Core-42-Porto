@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/26 14:58:07 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/26 15:30:17 by joao-vri         ###   ########.fr       */
+/*   Created: 2024/04/26 16:15:17 by joao-vri          #+#    #+#             */
+/*   Updated: 2024/04/26 18:55:38 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	if (fd < 0)
-		return ;
-	while (*s)
-		write (fd, s++, 1);
-	return ;
+	char	*str;
+	char	*og;
+
+	if (s == NULL || start >= ft_strlen(s))
+		return (NULL);
+	s += start;
+	str = malloc(sizeof(char) * (len + 1));
+	if (str == NULL)
+		return (NULL);
+	og = str;
+	while (len-- && *s != '\0')
+		*str++ = *s++;
+	*str = '\0';
+	return (og);
 }
 
 /* int	main(void)
 {
-	ft_putstr_fd("Teste 123", 1);
+	char	*str = ft_substr("I am only testing", 2, 7);
+
+	printf("%s", str);
 } */

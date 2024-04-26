@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 12:11:20 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/26 13:42:14 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/04/26 15:39:40 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 
 void	ft_putchar_fd(char c, int fd)
 {
+	if (fd < 0)
+		return ;
 	write (fd, &c, 1);
 }
-// Falta a int main
+
+/* int	main(void)
+{
+	ft_putchar_fd('c', 1);
+} */
