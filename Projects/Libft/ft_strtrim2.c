@@ -1,36 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/26 19:04:46 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/29 09:50:07 by joao-vri         ###   ########.fr       */
+/*   Created: 2024/04/29 16:00:03 by joao-vri          #+#    #+#             */
+/*   Updated: 2024/04/29 16:00:04 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "libft.h"
+#include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strtrim2(char const *s1, char const *set)
 {
+	size_t	i;
+	size_t	n;
 	char	*str;
-	size_t	len;
 
-	if (!s1 || !s2)
+	if (!s1)
 		return (NULL);
-	len = ft_strlen(s1) + ft_strlen(s2) + 1;
-	str = malloc(sizeof(char) * (len));
+	while (*s1 && ft_strchr(set, *s1))
+		s1++;
+	n = ft_strlen(s1);
+	while (n && ft_strchr(set, s1[n - 1]))
+		n--;
+	str = malloc(n + 1);
 	if (!str)
 		return (NULL);
-	ft_strlcat((char *)s1, (char *)s2, len);
-	ft_strlcpy(str, (char *)s1, len);
+	ft_strlcpy(str, s1, n + 1);
 	return (str);
 }
 
-/* int	main(void)
+int	main(void)
 {
-	char	str[6] = "Teste ";
+	char	*str;
 
-	printf("%s", ft_strjoin(str, "123"));
-} */
+	str = ft_strtrim2("    a    Teste123    a    ", "a ");
+	printf("%s", str);
+	free(str);
+}
