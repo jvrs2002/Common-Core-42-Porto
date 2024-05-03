@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 12:50:15 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/05/03 11:01:21 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/05/03 12:47:25 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,14 @@ size_t	ft_strcount(const char *str, char c)
 	n = 0;
 	while (str[i] != '\0')
 	{
-		while (str[i] == c)
-			++i;
 		if (str[i] != c)
-			++i;
-		if (str[i] == c && str[i] != '\0')
+		{
 			++n;
+			while (str[i] != '\0' && str[i] != c)
+				++i;
+		}
+		else
+			++i;
 	}
 	return (n);
 }
@@ -47,45 +49,45 @@ void	ft_free(size_t i, char **strs)
 		free(strs[--i]);
 	free(strs);
 }
-//
-//
-//FALTA VER LEAK DE MEMORIA
-//
-//
+
 char	**ft_split(char const *s, char c)
 {
 	size_t	i;
-	size_t	len;
+	size_t	count;
 	char	**strs;
 
-	strs = malloc(sizeof(char *) * (ft_strcount(s, c) + 1));
+	count = ft_strcount(s, c);
+	strs = malloc(sizeof(char *) * (count + 1));
 	if (!strs)
 		return (NULL);
 	i = 0;
-	while (*s)
+	while (i < count)
 	{
 		while (*s && *s == c)
 			++s;
-		len = ft_untilnext(s, c);
-		strs[i] = malloc(len + 1);
+		strs[i] = malloc(ft_untilnext(s, c) + 1);
 		if (!strs[i])
 		{
 			ft_free(i, strs);
 			return (NULL);
 		}
-		ft_strlcpy(strs[i++], s, len + 1);
-		s += len;
+		ft_strlcpy(strs[i++], s, ft_untilnext(s, c) + 1);
+		s += ft_untilnext(s, c);
 	}
 	strs[i] = NULL;
 	return (strs);
 }
 
-int	main(void)
+/* int	main(void)
 {
-	char **str = ft_split(" teste 123  24 ", ' ');
+	char	str1[100] = "COLOQUE AQUI UM TESTE";
+	char **str = ft_split(str1, ' ');
+	size_t	count = ft_strcount(str1, ' ');
+
 	size_t i = 0;
-	while (**str && i < ft_strcount(" teste 123   24  ", ' '))
+	while (i < count)
 		if (str)
 			printf("%s\n", str[i++]);
+	printf("Number of strings: %zu\n", count);
 	ft_free(i, str);
-}
+} */

@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:15:19 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/05/02 17:44:12 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/05/03 15:36:36 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*str;
 	unsigned int	i;
+	char			*str;
 
 	if (!s)
 		return (NULL);
@@ -34,7 +34,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 
 /* char	ft_lowercase(unsigned int i, char str)
 {
-	str += 32;
+	if (str >= 'A' && str <= 'Z')
+		str += 32;
 	return (str);
 }
 
@@ -43,4 +44,5 @@ int	main(void)
 	char	str[10] = "HELLO";
 	char	*dest = ft_strmapi(str, ft_lowercase);
 	printf("%s", dest);
+	free (dest);
 } */
