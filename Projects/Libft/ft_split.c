@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 12:50:15 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/05/02 17:07:51 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/05/03 11:01:21 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,12 @@ char	**ft_split(char const *s, char c)
 	return (strs);
 }
 
-/* int	main(void)
+int	main(void)
 {
 	char **str = ft_split(" teste 123  24 ", ' ');
 	size_t i = 0;
-	while (**str && i < ft_strcount(" teste 123   24 ", ' '))
+	while (**str && i < ft_strcount(" teste 123   24  ", ' '))
 		if (str)
 			printf("%s\n", str[i++]);
-	free(str);
-} */
+	ft_free(i, str);
+}
