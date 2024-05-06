@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 14:49:29 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/26 19:59:39 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/05/06 14:56:49 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,29 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t	len;
+	size_t	len_dst;
+	size_t	len_src;
 	size_t	i;
 
 	i = 0;
-	len = ft_strlen(dst);
-	if (len >= size)
-		return (len + ft_strlen(src));
-	while (src[i] != '\0' && len + i < size - 1)
+	len_dst = ft_strlen(dst);
+	len_src = ft_strlen(src);
+	if (len_dst >= size)
+		return (size + len_src);
+	while (src[i] != '\0' && len_dst + i < size - 1)
 	{
-		dst[len + i] = src[i];
+		dst[len_dst + i] = src[i];
 		++i;
 	}
-	dst[len + i] = '\0';
-	return (len + i);
+	dst[len_dst + i] = '\0';
+	return (len_dst + len_src);
 }
 
 /* int	main(void)
 {
-	char dst[] = "Hello ";
-	const char *src = "World";
-	size_t size = 9;
+	char dst[10] = "a";
+	const char *src = "lorem ipsum dolor sit amet";
+	size_t size = 0;
 
 	printf("%lu\n", ft_strlcat(dst, src, size));
 	ft_strlcat(dst, src, size);

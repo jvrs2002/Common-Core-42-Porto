@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 09:58:59 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/05/03 14:24:48 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/05/06 15:22:15 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 char	*ft_find(char const *s1, char const *set)
 {
 	size_t	i;
-	size_t	n;
 	char	*str;
 
 	i = 0;
@@ -44,11 +43,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (!s1)
 		return (NULL);
 	s1 = ft_find(s1, set);
-	n = ft_strlen(s1) - 1;
+	n = ft_strlen(s1);
 	i = 0;
 	while (set[i] != '\0')
 	{
-		if (s1[n] == set[i])
+		if (s1[n - 1] == set[i])
 		{
 			n--;
 			i = 0;
@@ -56,10 +55,10 @@ char	*ft_strtrim(char const *s1, char const *set)
 		else
 			i++;
 	}
-	str = malloc(sizeof(char) * (n + 2));
+	str = malloc(sizeof(char) * (n + 1));
 	if (!str)
 		return (NULL);
-	ft_strlcpy(str, s1, n + 2);
+	ft_strlcpy(str, s1, n + 1);
 	return (str);
 }
 
@@ -67,7 +66,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*str;
 
-	str = ft_strtrim("a    Teste123    a    ", "a ");
+	str = ft_strtrim("", "");
 	printf("%s", str);
 	free(str);
 } */

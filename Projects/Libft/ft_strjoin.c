@@ -6,11 +6,11 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 19:04:46 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/29 09:50:07 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/05/06 12:49:15 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "libft.h"
+#include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

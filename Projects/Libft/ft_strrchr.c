@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:54:29 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/24 15:30:28 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/05/06 15:07:37 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@ char	*ft_strrchr(const char *s, int c)
 		s++;
 	}
 	if (c == '\0')
-		return (ptr);
-	else if (ptr != NULL)
-		return (ptr);
-	return (NULL);
+	{
+		ptr = (char *)s;
+		return (ptr += ft_strlen(ptr));
+	}
+	return (ptr);
 }
 
 /*int main(void)

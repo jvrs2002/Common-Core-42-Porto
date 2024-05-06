@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:35:13 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/05/02 15:05:28 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/05/06 17:45:09 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,18 @@ size_t	ft_digits(int n)
 		n /= 10;
 		dig++;
 	}
+	if (n < 0)
+		dig++;
 	return (dig + 1);
+}
+
+char	*ft_minint(char *nbr)
+{
+	nbr = (char *)malloc(sizeof(char) * 12);
+	if (!nbr)
+		return (NULL);
+	ft_strlcpy(nbr, "-2147483648", 12);
+	return (nbr);
 }
 
 char	*ft_itoa(int n)
@@ -32,13 +43,13 @@ char	*ft_itoa(int n)
 	int		n_pos;
 
 	n_pos = n;
+	nbr = NULL;
+	if (n == -2147483648)
+		return (ft_minint(nbr));
 	dig = ft_digits(n);
 	if (n < 0)
-	{
 		n_pos *= -1;
-		dig++;
-	}
-	nbr = malloc(sizeof(char *) * (dig + 1));
+	nbr = (char *)malloc(sizeof(char) * (dig + 1));
 	if (!nbr)
 		return (NULL);
 	*(nbr + dig) = 0;
@@ -54,7 +65,7 @@ char	*ft_itoa(int n)
 
 /* int	main(void)
 {
-	char	*nbr = ft_itoa(1234421412);
+	char	*nbr = ft_itoa(-121);
 	printf("%s", nbr);
 	free (nbr);
 } */

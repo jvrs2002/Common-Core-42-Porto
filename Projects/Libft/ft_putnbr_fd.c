@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 10:50:50 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/26 15:35:09 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/05/06 17:54:20 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ void	ft_putnbr_fd(int nb, int fd)
 	if (fd < 0)
 		return ;
 	if (nb == -2147483648)
-		write (fd, "-2147483648", 1);
+	{
+		write (fd, "-2147483648", 11);
+		return ;
+	}
 	else
 	{
 		if (nb < 0)
@@ -33,5 +36,5 @@ void	ft_putnbr_fd(int nb, int fd)
 
 /* int	main(void)
 {
-	ft_putnbr_fd(-123456, 1);
+	ft_putnbr_fd(2147483647, 1);
 } */

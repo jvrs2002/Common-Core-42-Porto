@@ -6,13 +6,13 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:22:24 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/24 15:30:22 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/05/06 17:05:14 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(unsigned char c)
+int	ft_toupper(int c)
 {
 	if (c >= 97 && c <= 122)
 		c -= 32;
