@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 10:50:50 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/05/06 17:54:20 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/05/09 11:20:35 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_putnbr_fd(int nb, int fd)
 			ft_putchar_fd('-', fd);
 			nb = -nb;
 		}
-		if (nb > 10)
+		if (nb >= 10)
 			ft_putnbr_fd(nb / 10, fd);
 	}
 	ft_putchar_fd((nb % 10 + '0'), fd);
@@ -36,5 +36,5 @@ void	ft_putnbr_fd(int nb, int fd)
 
 /* int	main(void)
 {
-	ft_putnbr_fd(2147483647, 1);
+	ft_putnbr_fd(10, 1);
 } */

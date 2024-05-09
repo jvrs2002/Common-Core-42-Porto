@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 11:48:29 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/24 15:30:48 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/05/09 12:29:51 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 void	*ft_memchr(const void *str, int c, size_t n)
 {
-	char	*ptr;
+	const unsigned char	*ptr;
 
-	ptr = (char *)str;
-	while (n-- > 0)
+	ptr = (const unsigned char *)str;
+	c %= 256;
+	while (n--)
 	{
-		if (*ptr == c)
+		if (*ptr == (unsigned char)c)
 			return ((void *)ptr);
 		ptr++;
 	}

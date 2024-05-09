@@ -6,13 +6,13 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 16:12:22 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/04/24 15:31:23 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/05/09 10:57:18 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(char *src)
+int	ft_atoi(const char *src)
 {
 	int	i;
 	int	signal;
@@ -21,7 +21,7 @@ int	ft_atoi(char *src)
 	nbr = 0;
 	signal = 1;
 	i = 0;
-	while ((src[i] >= 7 && src[i] <= 13) || (src[i] == 32))
+	while ((src[i] >= 9 && src[i] <= 13) || (src[i] == 32))
 		i++;
 	if ((src[i] == '-') || (src[i] == '+'))
 	{
@@ -37,7 +37,8 @@ int	ft_atoi(char *src)
 	return (nbr * signal);
 }
 
-/*int	main(void)
+/* int	main(void)
 {
-	printf("%i", ft_atoi("   -1234ab23"));
-}*/
+	printf("%i", ft_atoi("\010 8"));
+	printf("%i", atoi("\010 8"));
+} */

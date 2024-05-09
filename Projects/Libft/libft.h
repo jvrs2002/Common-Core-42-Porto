@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:15:08 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/05/06 17:10:57 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/05/07 13:34:16 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 # include <stdio.h>
 
-int		ft_atoi(char *src);
+int		ft_atoi(const char *src);
 int		ft_isalnum(char c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);

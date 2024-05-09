@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:21:38 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/05/06 15:03:33 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/05/09 12:14:34 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,19 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	char	*ptr;
-
-	ptr = NULL;
-	if (c == '\0')
-	{
-		ptr = (char *) s;
-		return (ptr += ft_strlen(ptr));
-	}
+	c %= 256;
 	while (*s != '\0')
 	{
 		if (*s == c)
-		{
-			ptr = (char *) s;
-			return (ptr);
-		}
+			return ((char *)s);
 		++s;
 	}
+	if (c == '\0')
+		return ((char *)s);
 	return (NULL);
 }
 
-/*int	main(void)
+/* int	main(void)
 {
 	printf("%s", ft_strchr("Testete", 't'));
-}*/
+} */
