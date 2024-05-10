@@ -6,18 +6,18 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 12:50:15 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/05/06 12:18:08 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/05/10 13:30:47 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_untilnext(const char *str, char c)
+size_t	ft_untilnext(const char *str)
 {
 	size_t	i;
 
 	i = 0;
-	while (str[i] != c && str[i])
+	while (str[i])
 		++i;
 	return (i);
 }
@@ -65,14 +65,14 @@ char	**ft_split(char const *s, char c)
 	{
 		while (*s && *s == c)
 			++s;
-		strs[i] = malloc(ft_untilnext(s, c) + 1);
+		strs[i] = malloc(ft_untilnext(s) + 1);
 		if (!strs[i])
 		{
 			ft_free(i, strs);
 			return (NULL);
 		}
-		ft_strlcpy(strs[i++], s, ft_untilnext(s, c) + 1);
-		s += ft_untilnext(s, c);
+		ft_strlcpy(strs[i++], s, ft_untilnext(s) + 1);
+		s += ft_untilnext(s);
 	}
 	strs[i] = NULL;
 	return (strs);

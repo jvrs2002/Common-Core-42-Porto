@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:15:08 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/05/07 13:34:16 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/05/10 13:35:56 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+
+typedef struct s_list
+{
+	void	*content;
+	struct s_list	*next;
+}	t_list;
 
 int		ft_atoi(const char *src);
 int		ft_isalnum(char c);
@@ -52,5 +58,6 @@ char	*ft_strnstr(const char *big, const char *little, size_t len);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+t_list	*ft_lstnew(void *content);
 
 #endif
