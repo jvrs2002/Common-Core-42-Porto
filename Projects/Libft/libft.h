@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:15:08 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/05/13 13:38:36 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/05/13 16:57:55 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 
 typedef struct s_list
 {
-	void	*content;
+	void			*content;
 	struct s_list	*next;
-}	t_list;
+}					t_list;
 
 int		ft_atoi(const char *src);
 int		ft_isalnum(char c);
@@ -40,6 +40,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t n);
 size_t	ft_strlen(const char *c);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
+void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	*ft_memchr(const void *str, int c, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
@@ -60,6 +61,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-t_list	*ft_lstnew(void *content);
+t_list *ft_lstnew(void *content);
+t_list	*ft_lstlast(t_list *lst);
 
 #endif
