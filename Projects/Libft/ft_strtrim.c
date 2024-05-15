@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 16:00:03 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/05/09 10:41:46 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/05/15 10:04:59 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*str;
 
-	str = ft_strtrim2("    a    Teste123    a    ", "a ");
+	str = ft_strtrim("    a    Teste123    a    ", "a ");
 	printf("%s", str);
 	free(str);
 } */
