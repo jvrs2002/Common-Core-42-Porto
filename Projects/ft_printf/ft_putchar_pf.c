@@ -6,9 +6,11 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:36:22 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/05/21 15:44:10 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/05/24 16:06:43 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libftprintf.h"
 
 size_t	ft_putchar_pf(char c)
 {
