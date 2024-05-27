@@ -6,11 +6,11 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:39:14 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/05/21 15:30:18 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/05/27 15:39:54 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 size_t	ft_putstr_pf(char *str)
 {
@@ -18,6 +18,6 @@ size_t	ft_putstr_pf(char *str)
 
 	i = 0;
 	while (str[i])
-		write (1, str[i++], 1);
+		write (1, &str[i++], 1);
 	return (i);
 }
