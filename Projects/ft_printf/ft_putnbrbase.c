@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_pf.c                                     :+:      :+:    :+:   */
+/*   ft_putnbrbase.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/21 15:01:19 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/05/29 15:31:54 by joao-vri         ###   ########.fr       */
+/*   Created: 2024/05/29 11:29:30 by joao-vri          #+#    #+#             */
+/*   Updated: 2024/05/29 17:24:15 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_putnbr_pf(int nb)
+size_t	ft_putnbrbase(unsigned long int nb, size_t ind)
 {
 	size_t	i;
 
 	i = 0;
-	if (nb == -2147483648)
+	if (nb == 0 && ind == 3)
+		return (ft_putstr_pf("(nil)"));
+	if (nb != 0 && ind == 3)
 	{
-		write (1, "-2147483648", 11);
-		return (i += 11);
+		i += ft_putstr_pf("0x");
+		ind = 1;
 	}
-	else
-	{
-		if (nb < 0)
-		{
-			ft_putchar_pf('-');
-			i++;
-			nb = -nb;
-		}
-		if (nb >= 10)
-			i += ft_putnbr_pf(nb / 10);
-	}
-	i += ft_putchar_pf(nb % 10 + '0');
+	if (nb >= 16)
+		i += ft_putnbrbase(nb / 16, ind);
+	if ((nb % 16) < 10)
+		i += ft_putchar_pf((nb % 16) + 48);
+	else if (ind == 1)
+		i += ft_putchar_pf((nb % 16) + 87);
+	else if (ind == 2)
+		i += ft_putchar_pf((nb % 16) + 55);
 	return (i);
 }

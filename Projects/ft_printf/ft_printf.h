@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:06:25 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/05/27 15:41:24 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/05/29 17:24:26 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdio.h>
 
@@ -22,6 +22,7 @@
 int		ft_printf(const char *str, ...);
 size_t	ft_putchar_pf(int c);
 size_t	ft_putnbr_pf(int nb);
+size_t	ft_putnbrbase(unsigned long int nb, size_t ind);
 size_t	ft_putnbr_unsigned_pf(unsigned int nb);
 size_t	ft_putstr_pf(char *str);
 
