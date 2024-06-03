@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 11:18:59 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/05/29 17:23:53 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/06/03 11:26:26 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ size_t	ft_check_flag(const char *str, va_list args)
 	else if (*str == 's')
 		return (count += ft_putstr_pf(va_arg(args, char *)));
 	else if (*str == 'p')
-		return (count += ft_putnbrbase((unsigned long)va_arg(args, void *), 3));
+		return (count += ft_putnbr_hex((unsigned long)va_arg(args, void *), 3));
 	else if (*str == 'd' || *str == 'i')
 		return (count + ft_putnbr_pf(va_arg(args, int)));
 	else if (*str == 'u')
 		return (count + ft_putnbr_unsigned_pf(va_arg(args, unsigned int)));
 	else if (*str == 'x')
-		return (count + ft_putnbrbase(va_arg(args, unsigned int), 1));
+		return (count + ft_putnbr_hex(va_arg(args, unsigned int), 1));
 	else if (*str == 'X')
-		return (count + ft_putnbrbase(va_arg(args, unsigned int), 2));
+		return (count + ft_putnbr_hex(va_arg(args, unsigned int), 2));
 	return (0);
 }
 
@@ -61,14 +61,16 @@ int	ft_printf(const char *str, ...)
 	size_t	n;
 	long int	l;
 	void	*p;
+	char	*str;
 
 	l = __LONG_MAX__;
 	p = &l;
+	str = NULL;
 	printf("ORIGINAL: ");
-	i = printf("%p", p);
+	i = printf("%s", str);
 	printf("\nReturn Value on ORIGINAL: %zu", i);
 	ft_printf("CUSTOM: ");
-	n = ft_printf("%p", p);
+	n = ft_printf("%s", str);
 	write(1, "\n", 1);
 	ft_printf("Return Value on CUSTOM: %i\n", n);
 } */

@@ -1,6 +1,6 @@
 CFLAGS = -Wall -Wextra -Werror
 
-CFILES = ft_printf.c ft_putchar_pf.c ft_putnbrbase.c ft_putnbr_pf.c ft_putnbr_unsigned_pf.c ft_putstr_pf.c
+CFILES = ft_printf.c ft_putchar_pf.c ft_putnbr_hex.c ft_putnbr_pf.c ft_putnbr_unsigned_pf.c ft_putstr_pf.c
 
 OFILES = $(CFILES:.c=.o)
 
