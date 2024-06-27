@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:17:39 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/06/25 15:52:52 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/06/27 15:50:38 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
+#  define BUFFER_SIZE 1
 # endif
 
 char	*get_next_line(int fd);
-size_t	ft_newline(char *str);
+char	*ft_strjoin(char const *s1, char const *s2, size_t len_s2);
+size_t	ft_strlen(const char *c);
+long int	ft_newline(char *str);
 size_t	ft_strlcpy(char *dst, const char *src, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
 

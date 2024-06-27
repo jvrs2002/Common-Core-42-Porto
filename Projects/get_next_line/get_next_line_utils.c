@@ -6,20 +6,22 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 11:49:42 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/06/25 15:52:41 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/06/27 15:53:08 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_newline(char *buffer)
+long int	ft_newline(char *buffer)
 {
 	size_t	i;
 
 	i = 0;
-	while (buffer[i] != '\n' && buffer[i] != '\0')
+	while (buffer[i] != '\n' && buffer[i])
 		++i;
-	return (i + 2);
+	if (buffer[i] == '\n')
+		return (i);
+	return (-1);
 }
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t n)
@@ -57,27 +59,28 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return (NULL);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+size_t	ft_strlen(const char *c)
+{
+	size_t	i;
+
+	i = 0;
+	while (c[i])
+		++i;
+	return (i);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2, size_t len_s2)
 {
 	char	*str;
 	size_t	len_s1;
-	size_t	len_s2;
 
-	len_s1 = 0;
-	len_s2 = 0;
 	if (!s1 || !s2)
 		return (NULL);
-	while (s1[len_s1])
-		++len_s1;
-	while (s2[len_s2])
-		++len_s2;
-	len_s1++;
-	len_s2++;
-	str = (char *)malloc(sizeof(char) * (len_s1 + len_s2 + 1));
+	len_s1 = ft_strlen(s1);
+	str = (char *)malloc(sizeof(char) * (len_s1 + len_s2));
 	if (!str)
 		return (NULL);
 	ft_strlcpy(str, (char *)s1, len_s1 + len_s2);
 	ft_strlcpy(str + len_s1, (char *)s2, len_s2);
 	return (str);
 }
-//FALTA MUDAR O STRJOIN P N USAR OUTRAS FT
