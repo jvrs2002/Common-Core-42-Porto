@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 11:49:42 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/06/27 15:53:08 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/06/29 18:37:31 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,18 @@ void	*ft_calloc(size_t nmemb, size_t size)
 
 	total_size = size * nmemb;
 	ptr = malloc(total_size);
-	char_ptr = (unsigned char*)ptr;
+	char_ptr = (unsigned char *)ptr;
 	if (char_ptr != NULL && nmemb != 0)
 	{
 		while (total_size-- > 0)
-			*char_ptr++ = 0;
+		{
+			*char_ptr = 0;
+			char_ptr++;
+		}
 		return (ptr);
 	}
 	return (NULL);
-}
+} //MUDAR O RETURN NULL PRA DENTRO DO IF E O RETURN PTR PRA FORA
 
 size_t	ft_strlen(const char *c)
 {
@@ -69,7 +72,7 @@ size_t	ft_strlen(const char *c)
 	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2, size_t len_s2)
+char	*ft_strljoin(void *s1, char const *s2, size_t len_s2)
 {
 	char	*str;
 	size_t	len_s1;
@@ -82,5 +85,6 @@ char	*ft_strjoin(char const *s1, char const *s2, size_t len_s2)
 		return (NULL);
 	ft_strlcpy(str, (char *)s1, len_s1 + len_s2);
 	ft_strlcpy(str + len_s1, (char *)s2, len_s2);
+	free(s1);
 	return (str);
 }

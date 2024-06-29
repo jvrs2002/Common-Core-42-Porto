@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:05:15 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/06/27 15:43:00 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/06/29 18:32:51 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,32 +17,36 @@
 
 char	*get_next_line(int fd)
 {
-	char	*str;
-	static char	*buffer;
+	char		*str;
 	ssize_t	bytes_read;
+	static char	*buffer;
 
 	if (!buffer)
 		buffer = ft_calloc(BUFFER_SIZE, sizeof(char));
 	str = ft_calloc(BUFFER_SIZE, sizeof(char));
+	bytes_read = read(fd, buffer, BUFFER_SIZE);
 	while (1)
 	{
 		if (ft_newline(buffer) != -1)
 		{
-			str = ft_strjoin(str, buffer, ft_newline(buffer) + 1);
+			str = ft_strljoin(str, buffer, ft_newline(buffer) + 1);
 			str[ft_strlen(str)] = '\n';
-			break;
+			break ;
 		}
 		else
-			str = ft_strjoin(str, buffer, BUFFER_SIZE + 1);
-		bytes_read += read(fd, buffer, BUFFER_SIZE);
+			str = ft_strljoin(str, buffer, BUFFER_SIZE + 1);
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		buffer[BUFFER_SIZE] = '\0';
 	}
 	if (bytes_read <= 0)
+	{
+		free(buffer);
+		free(str);
 		return (NULL);
-	while (*buffer != '\n' && buffer)
+	}
+	while (*buffer != '\n')
 		*buffer++ = 0;
-	if (*buffer == '\n')
-		*buffer++ = 0;
+	*buffer++ = 0;
 	return (str);
 }
 int	main()
@@ -71,6 +75,5 @@ int	main()
 		printf("%s", str);
 		free(str);
 	}
-	close(fd);
 	return 0;
 }
