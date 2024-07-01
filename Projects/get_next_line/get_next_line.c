@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:05:15 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/06/29 18:32:51 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/07/01 12:07:06 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,15 @@ char	*get_next_line(int fd)
 		buffer = ft_calloc(BUFFER_SIZE, sizeof(char));
 	str = ft_calloc(BUFFER_SIZE, sizeof(char));
 	bytes_read = read(fd, buffer, BUFFER_SIZE);
-	while (1)
+	while (buffer)
 	{
 		if (ft_newline(buffer) != -1)
 		{
-			str = ft_strljoin(str, buffer, ft_newline(buffer) + 1);
+			str = ft_strljoin(str, buffer, ft_newline(buffer));
 			str[ft_strlen(str)] = '\n';
+			while (*buffer != '\n' && buffer)
+				*buffer++ = 0;
+			*buffer++ = 0;
 			break ;
 		}
 		else
@@ -38,15 +41,12 @@ char	*get_next_line(int fd)
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		buffer[BUFFER_SIZE] = '\0';
 	}
-	if (bytes_read <= 0)
+	if (bytes_read <= 0 && !buffer)
 	{
 		free(buffer);
 		free(str);
 		return (NULL);
 	}
-	while (*buffer != '\n')
-		*buffer++ = 0;
-	*buffer++ = 0;
 	return (str);
 }
 int	main()
@@ -57,23 +57,14 @@ int	main()
 		perror("Error opening file");
 		return 1;
 	}
-	char	*str = get_next_line(fd);
-	if (str)
-	{
-		printf("%s", str);
-		free(str);
-	}
+	char	*str;
+
 	str = get_next_line(fd);
-	if (str)
+	while (str)
 	{
 		printf("%s", str);
-		free(str);
-	}
-	str = get_next_line(fd);
-	if (str)
-	{
-		printf("%s", str);
-		free(str);
+		free (str);
+		str = get_next_line(fd);
 	}
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 11:49:42 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/06/29 18:37:31 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/07/01 12:07:05 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ long int	ft_newline(char *buffer)
 	size_t	i;
 
 	i = 0;
-	while (buffer[i] != '\n' && buffer[i])
+	while (buffer[i] != '\n' && buffer[i] != '\0')
 		++i;
 	if (buffer[i] == '\n')
-		return (i);
+		return (i + 1);
 	return (-1);
 }
 
@@ -43,24 +43,22 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t n)
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void	*ptr;
-	unsigned char	*char_ptr;
 	size_t	total_size;
+	size_t	i;
+	unsigned char	*char_ptr;
 
+	if (nmemb == 0 || size == 0)
+		return (NULL);
+	i = 0;
 	total_size = size * nmemb;
-	ptr = malloc(total_size);
-	char_ptr = (unsigned char *)ptr;
-	if (char_ptr != NULL && nmemb != 0)
+	char_ptr = (unsigned char *)malloc(total_size);
+	while (i < total_size)
 	{
-		while (total_size-- > 0)
-		{
-			*char_ptr = 0;
-			char_ptr++;
-		}
-		return (ptr);
+		char_ptr[i] = 0;
+		i++;
 	}
-	return (NULL);
-} //MUDAR O RETURN NULL PRA DENTRO DO IF E O RETURN PTR PRA FORA
+	return (char_ptr);
+}
 
 size_t	ft_strlen(const char *c)
 {
