@@ -6,15 +6,11 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:05:15 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/07/02 15:38:39 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/07/02 15:44:05 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <string.h>
 
 char	*get_next_line(int fd)
 {
@@ -62,7 +58,11 @@ char	*get_next_line(int fd)
 	}
 	return (str);
 }
-/* int	main()
+
+/* #include <stdio.h>
+#include <fcntl.h>
+
+int	main()
 {
 	int fd = open("txt.txt", O_RDONLY);
 	if (fd < 0)

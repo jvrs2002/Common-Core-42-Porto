@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:17:39 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/07/02 15:15:57 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/07/02 15:45:58 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@
 #  define BUFFER_SIZE 10000000
 # endif
 
-char	*get_next_line(int fd);
 char	*ft_strljoin(char *s1, char const *s2, size_t len_s2);
-long int	ft_newline(char *str);
+char	*get_next_line(int fd);
 size_t	ft_strlcpy(char *dst, const char *src, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	*ft_memmove(void *dest, const void *src, size_t n);
-char	*ft_copy2(int fd, char *str, ssize_t bytes_read, char *buffer);
+long int	ft_newline(char *str);
 
 #endif
