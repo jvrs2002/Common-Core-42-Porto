@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joviribeiro <joviribeiro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 11:49:42 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/07/01 19:38:19 by joviribeiro      ###   ########.fr       */
+/*   Updated: 2024/07/02 14:42:10 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ long int	ft_newline(char *buffer)
 	size_t	i;
 
 	i = 0;
-	while (buffer[i] != '\n' && buffer[i] != '\0')
+	while (buffer[i] != '\0')
+	{
+		if (buffer[i] == '\n')
+			return (i);
 		++i;
-	if (buffer[i] == '\n' && buffer)
-		return (i + 1);
+	}
 	return (-1);
 }
 
@@ -60,24 +62,16 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return (char_ptr);
 }
 
-size_t	ft_strlen(const char *c)
-{
-	size_t	i;
-
-	i = 0;
-	while (c[i])
-		++i;
-	return (i);
-}
-
-char	*ft_strljoin(void *s1, char const *s2, size_t len_s2)
+char	*ft_strljoin(char *s1, char const *s2, size_t len_s2)
 {
 	char	*str;
 	size_t	len_s1;
 
+	len_s1 = 0;
 	if (!s1 || !s2)
 		return (NULL);
-	len_s1 = ft_strlen(s1);
+	while (s1[len_s1])
+		++len_s1;
 	str = (char *)malloc(sizeof(char) * (len_s1 + len_s2));
 	if (!str)
 		return (NULL);
@@ -85,4 +79,26 @@ char	*ft_strljoin(void *s1, char const *s2, size_t len_s2)
 	ft_strlcpy(str + len_s1, (char *)s2, len_s2);
 	free(s1);
 	return (str);
+}
+
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	const char	*ptr2;
+	char		*ptr1;
+
+	ptr2 = (const char *)src;
+	ptr1 = (char *)dest;
+	if (ptr1 == ptr2)
+		return (dest);
+	if (ptr1 < ptr2)
+		while (n--)
+			*ptr1++ = *ptr2++;
+	else
+	{
+		ptr1 += n;
+		ptr2 += n;
+		while (n--)
+			*(--ptr1) = *(--ptr2);
+	}
+	return (dest);
 }

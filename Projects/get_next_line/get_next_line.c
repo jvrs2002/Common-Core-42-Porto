@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joviribeiro <joviribeiro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:05:15 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/07/02 11:35:33 by joviribeiro      ###   ########.fr       */
+/*   Updated: 2024/07/02 15:38:39 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,45 +14,55 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include <string.h>
 
 char	*get_next_line(int fd)
 {
 	char		*str;
-	ssize_t	bytes_read;
 	static char	*buffer;
+	ssize_t		bytes_read;
+	ssize_t		newline;
 
-	if (!buffer) //Only allocates memory and reads on the first time, when there is nothing on buffer
+	if (!buffer)
 	{
-		buffer = ft_calloc(BUFFER_SIZE, sizeof(char));
-		bytes_read = read(fd, buffer, BUFFER_SIZE); //First read to enter the loop
+		buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+		buffer[0] = '\0';
+		if (!buffer)
+			return (NULL);
 	}
+	bytes_read = 0;
 	str = ft_calloc(BUFFER_SIZE, sizeof(char));
 	while (buffer)
 	{
-		if (ft_newline(buffer) != -1) //When it finds a '\n' on buffer (return is -1 when it doesnt finds)
+		if (buffer[0] == '\0')
 		{
-			str = ft_strljoin(str, buffer, ft_newline(buffer) + 1);
+			bytes_read = read(fd, buffer, BUFFER_SIZE);
+			if (bytes_read <= 0)
+				break ;
+			buffer[bytes_read] = '\0';
+		}
+		newline = ft_newline(buffer);
+		if (newline != -1)
+		{
+			str = ft_strljoin(str, buffer, newline + 2);
+			ft_memmove(buffer, buffer + newline + 1, BUFFER_SIZE - newline);
+			buffer[BUFFER_SIZE - newline] = '\0';
 			break ;
 		}
-		else if (ft_newline(buffer) == -1) //Joins what the buffer has into the str that is going to be returned and reads from fd for the next call
+		else
 		{
 			str = ft_strljoin(str, buffer, BUFFER_SIZE + 1);
-			bytes_read = read(fd, buffer, BUFFER_SIZE);
-			if (bytes_read < 0 && !buffer)
-			{
-				free(str);
-				free(buffer);
-				return (NULL);
-			}
-			buffer[ft_strlen(buffer)] = '\0';
+			buffer[0] = '\0';
 		}
 	}
-	while (*buffer != '\n' && buffer) //Sets to 0 everything up to '\n' or '\0'
-		buffer++ == 0;
-	*buffer++ = 0;
+	if (bytes_read <= 0 && str[0] == '\0')
+	{
+		free(str);
+		str = NULL;
+	}
 	return (str);
 }
-int	main()
+/* int	main()
 {
 	int fd = open("txt.txt", O_RDONLY);
 	if (fd < 0)
@@ -68,4 +78,4 @@ int	main()
 		str = get_next_line(fd);
 	}
 	return 0;
-}
+} */
