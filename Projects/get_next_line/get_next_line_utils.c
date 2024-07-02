@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joviribeiro <joviribeiro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 11:49:42 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/07/01 12:07:05 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/07/01 19:38:19 by joviribeiro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ long int	ft_newline(char *buffer)
 	i = 0;
 	while (buffer[i] != '\n' && buffer[i] != '\0')
 		++i;
-	if (buffer[i] == '\n')
+	if (buffer[i] == '\n' && buffer)
 		return (i + 1);
 	return (-1);
 }
