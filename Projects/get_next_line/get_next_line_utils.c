@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 11:49:42 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/07/02 15:45:43 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/07/04 13:57:11 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t n)
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	size_t	total_size;
-	size_t	i;
+	size_t			total_size;
+	size_t			i;
 	unsigned char	*char_ptr;
 
 	if (nmemb == 0 || size == 0)
@@ -54,6 +54,8 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	i = 0;
 	total_size = size * nmemb;
 	char_ptr = (unsigned char *)malloc(total_size);
+	if (!char_ptr)
+		return (NULL);
 	while (i < total_size)
 	{
 		char_ptr[i] = 0;
@@ -72,11 +74,11 @@ char	*ft_strljoin(char *s1, char const *s2, size_t len_s2)
 		return (NULL);
 	while (s1[len_s1])
 		++len_s1;
-	str = (char *)malloc(sizeof(char) * (len_s1 + len_s2));
+	str = (char *)malloc(sizeof(char) * (len_s1 + len_s2 + 1));
 	if (!str)
 		return (NULL);
-	ft_strlcpy(str, (char *)s1, len_s1 + len_s2);
-	ft_strlcpy(str + len_s1, (char *)s2, len_s2);
+	ft_strlcpy(str, (char *)s1, len_s1 + len_s2 + 1);
+	ft_strlcpy(str + len_s1, (char *)s2, len_s2 + 1);
 	free(s1);
 	return (str);
 }
