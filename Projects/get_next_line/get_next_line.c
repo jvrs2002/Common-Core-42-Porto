@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:05:15 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/07/04 15:53:29 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/07/05 13:02:24 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,16 @@ char	*get_next_line(int fd)
 	static char	*buffer;
 	ssize_t		bytes_read;
 
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
 	if (!buffer)
 	{
-		if (fd < 0 && BUFFER_SIZE >= 0)
-			return (NULL);
 		buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 		if (!buffer)
 			return (NULL);
-		buffer[0] = '\0';
 	}
-	bytes_read = 1;
-	str = ft_calloc(BUFFER_SIZE, sizeof(char));
+	bytes_read = 0;
+	str = ft_calloc(ft_strlen(buffer) + 1, sizeof(char));
 	if (!str)
 		return (NULL);
 	str = ft_copy(str, buffer, &bytes_read, fd);
@@ -64,6 +63,7 @@ char	*get_next_line(int fd)
 	{
 		free(str);
 		free(buffer);
+		buffer = NULL;
 		return (NULL);
 	}
 	return (str);
@@ -77,13 +77,17 @@ int	main()
 	int	fd;
 	char	*str;
 
-	fd = open("txt2", O_RDONLY);
-	str = get_next_line(fd);
+	fd = -1; //open("empty", O_RDONLY);
 	if (fd < 0)
 	{
 		perror("Error opening file");
 		return (1);
 	}
+	str = get_next_line(fd);
+	free(str);
+	str = get_next_line(fd);
+	printf("%s", str);
+
 	while (str)
 	{
 		printf("%s", str);
@@ -91,6 +95,5 @@ int	main()
 		str = get_next_line(fd);
 	}
 	free(str);
-	close(fd);
 	return (0);
 } */

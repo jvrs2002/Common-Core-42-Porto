@@ -6,11 +6,12 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 11:49:42 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/07/04 13:57:11 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/07/05 12:02:08 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <string.h>
 
 long int	ft_newline(char *buffer)
 {
@@ -26,21 +27,14 @@ long int	ft_newline(char *buffer)
 	return (-1);
 }
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t n)
+size_t	ft_strlen(const char *c)
 {
 	size_t	i;
 
 	i = 0;
-	if (n != 0)
-	{
-		while (src[i] != '\0' && i < n - 1)
-		{
-			dst[i] = src[i];
-			++i;
-		}
-		dst[i] = '\0';
-	}
-	return (0);
+	while (c[i])
+		++i;
+	return (i);
 }
 
 void	*ft_calloc(size_t nmemb, size_t size)
@@ -64,21 +58,31 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return (char_ptr);
 }
 
-char	*ft_strljoin(char *s1, char const *s2, size_t len_s2)
+char	*ft_strljoin(char *s1, char const *s2, size_t n)
 {
 	char	*str;
 	size_t	len_s1;
+	size_t	i;
 
-	len_s1 = 0;
 	if (!s1 || !s2)
 		return (NULL);
-	while (s1[len_s1])
-		++len_s1;
-	str = (char *)malloc(sizeof(char) * (len_s1 + len_s2 + 1));
+	i = 0;
+	len_s1 = ft_strlen(s1);
+	str = (char *)malloc(sizeof(char) * (len_s1 + n + 1));
 	if (!str)
 		return (NULL);
-	ft_strlcpy(str, (char *)s1, len_s1 + len_s2 + 1);
-	ft_strlcpy(str + len_s1, (char *)s2, len_s2 + 1);
+	while (i < len_s1)
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	i = 0;
+	while (s2[i] != '\0' && i < n)
+	{
+		str[i + len_s1] = s2[i];
+		++i;
+	}
+	str[len_s1 + i] = '\0';
 	free(s1);
 	return (str);
 }
