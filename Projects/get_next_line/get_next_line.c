@@ -77,17 +77,13 @@ int	main()
 	int	fd;
 	char	*str;
 
-	fd = -1; //open("empty", O_RDONLY);
+	fd = open("txt", O_RDONLY);
 	if (fd < 0)
 	{
 		perror("Error opening file");
 		return (1);
 	}
 	str = get_next_line(fd);
-	free(str);
-	str = get_next_line(fd);
-	printf("%s", str);
-
 	while (str)
 	{
 		printf("%s", str);
