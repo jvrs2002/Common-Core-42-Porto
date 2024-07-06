@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <string.h>
 
 char	*ft_copy(char *str, char *buffer, ssize_t *bytes_read, int fd)
 {
