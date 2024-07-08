@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:05:15 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/07/08 14:06:41 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/07/08 14:14:50 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_copy(char *str, char *buffer, ssize_t *bytes_read, int fd)
 {
@@ -43,27 +43,27 @@ char	*ft_copy(char *str, char *buffer, ssize_t *bytes_read, int fd)
 char	*get_next_line(int fd)
 {
 	char		*str;
-	static char	*buffer;
+	static char	*buffer[4096];
 	ssize_t		bytes_read;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!buffer)
+	if (!buffer[fd])
 	{
-		buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-		if (!buffer)
+		buffer[fd] = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+		if (!buffer[fd])
 			return (NULL);
 	}
 	bytes_read = 0;
-	str = ft_calloc(ft_strlen(buffer) + 1, sizeof(char));
+	str = ft_calloc(ft_strlen(buffer[fd]) + 1, sizeof(char));
 	if (!str)
 		return (NULL);
-	str = ft_copy(str, buffer, &bytes_read, fd);
+	str = ft_copy(str, buffer[fd], &bytes_read, fd);
 	if (bytes_read <= 0 && str[0] == '\0')
 	{
 		free(str);
-		free(buffer);
-		buffer = NULL;
+		free(buffer[fd]);
+		buffer[fd] = NULL;
 		return (NULL);
 	}
 	return (str);
@@ -75,22 +75,21 @@ char	*get_next_line(int fd)
 int	main()
 {
 	int	fd;
+	int	fd2;
 	char	*str;
 
 	fd = open("txt", O_RDONLY);
-	if (fd < 0)
-	{
-		perror("Error opening file");
-		return (1);
-	}
-	str = get_next_line(fd);
+	fd2 = open("txt2", O_RDONLY);
 	while (str)
 	{
+		str = get_next_line(fd);
 		printf("%s", str);
 		free (str);
-		str = get_next_line(fd);
+		str = get_next_line(fd2);
+		printf("%s", str);
 	}
 	close(fd);
+	close(fd2);
 	free(str);
 	return (0);
 } */
