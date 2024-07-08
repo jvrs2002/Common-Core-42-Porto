@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:05:15 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/07/08 14:14:50 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/07/08 15:39:48 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*ft_copy(char *str, char *buffer, ssize_t *bytes_read, int fd)
 char	*get_next_line(int fd)
 {
 	char		*str;
-	static char	*buffer[4096];
+	static char	*buffer[MAX_FD];
 	ssize_t		bytes_read;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)

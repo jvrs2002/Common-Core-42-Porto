@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:17:39 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/07/08 14:14:59 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/07/08 15:39:49 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
+# endif
+
+# ifndef MAX_FD
+#  define MAX_FD 1024
 # endif
 
 char		*ft_copy(char *str, char *buffer, ssize_t *bytes_read, int fd);
