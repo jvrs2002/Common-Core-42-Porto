@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:05:15 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/07/05 13:02:24 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/07/08 11:25:47 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_copy(char *str, char *buffer, ssize_t *bytes_read, int fd)
 {
 	ssize_t	newline;
 
-	while (1)
+	while (buffer)
 	{
 		if (buffer[0] == '\0')
 		{
@@ -29,7 +29,7 @@ char	*ft_copy(char *str, char *buffer, ssize_t *bytes_read, int fd)
 		if (newline != -1)
 		{
 			str = ft_strljoin(str, buffer, newline + 1);
-			ft_memmove(buffer, buffer + newline + 1, BUFFER_SIZE - newline);
+			ft_memmove(buffer, buffer + newline + 1, ft_strlen(buffer) - newline);
 			buffer[BUFFER_SIZE - newline] = '\0';
 			break ;
 		}
@@ -76,7 +76,7 @@ int	main()
 	int	fd;
 	char	*str;
 
-	fd = open("txt", O_RDONLY);
+	fd = open("alternate_line_nl_with_nl", O_RDONLY);
 	if (fd < 0)
 	{
 		perror("Error opening file");
