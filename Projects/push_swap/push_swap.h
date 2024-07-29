@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 11:15:45 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/07/24 16:32:19 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/07/29 15:03:17 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,17 @@ typedef struct s_stack
 	size_t	stack_size_b;
 }	t_stack;
 
-void	ft_sa(t_data **head);
-void	ft_sb(t_data **bottom);
-void	ft_ss(t_data **head, t_data **bottom);
+t_data	*create_node(int value);
+void	append_node(t_data **head, t_data *new_node);
+void	free_list(t_data *head);
 void	ft_ra_rb(t_data **head);
 void	ft_rr(t_data **head_a, t_data **head_b);
 void	ft_rra_rrb(t_data **head);
 void	ft_rrr(t_data **head_a, t_data **head_b);
+void	ft_sa(t_data **head);
+void	ft_sb(t_data **bottom);
+void	ft_ss(t_data **head, t_data **bottom);
+void	initialize_stack(t_stack *stack);
+void	print_list(t_data *head);
 
 #endif

@@ -1,41 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap_aux.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/17 12:30:37 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/07/29 14:15:04 by joao-vri         ###   ########.fr       */
+/*   Created: 2024/07/29 14:15:51 by joao-vri          #+#    #+#             */
+/*   Updated: 2024/07/29 14:30:47 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_data *create_node(int value);
-void append_node(t_data **head, t_data *new_node);
-void print_list(t_data *head);
-void initialize_stack(t_stack *stack);
-void free_list(t_data *head);
+t_data	*create_node(int value);
+void	append_node(t_data **head, t_data *new_node);
+void	print_list(t_data *head);
+void	initialize_stack(t_stack *stack);
+void	free_list(t_data *head);
 
-t_data *create_node(int value)
+t_data	*create_node(int value)
 {
-	t_data *node = (t_data *)malloc(sizeof(t_data));
+	t_data	*node;
+
+	node = (t_data *)malloc(sizeof(t_data));
 	if (!node)
-		exit(EXIT_FAILURE);
+		return (NULL);
 	node->number = value;
 	node->prev = node;
 	node->next = node;
 	return (node);
 }
 
-void append_node(t_data **head, t_data *new_node)
+void	append_node(t_data **head, t_data *new_node)
 {
+	t_data	*last;
+
 	if (*head == NULL)
 		*head = new_node;
 	else
 	{
-		t_data *last = (*head)->prev;
+		last = (*head)->prev;
 		last->next = new_node;
 		new_node->prev = last;
 		new_node->next = *head;
@@ -43,20 +47,22 @@ void append_node(t_data **head, t_data *new_node)
 	}
 }
 
-void print_list(t_data *head)
+void	print_list(t_data *head)
 {
+	t_data	*current;
+
 	if (head == NULL)
 		return ;
-	t_data *current = head;
+	current = head;
 	do
 	{
-		printf("%d ", current->number);
+		ft_printf("%d ", current->number);
 		current = current->next;
 	} while (current != head);
-	printf("\n");
+	ft_printf("\n");
 }
 
-void initialize_stack(t_stack *stack)
+void	initialize_stack(t_stack *stack)
 {
 	stack->stack_a = NULL;
 	append_node(&stack->stack_a, create_node(1));
@@ -72,7 +78,7 @@ void initialize_stack(t_stack *stack)
 	stack->stack_size_b = 4;
 }
 
-void free_list(t_data *head)
+void	free_list(t_data *head)
 {
 	if (head == NULL)
 		return ;
@@ -85,28 +91,3 @@ void free_list(t_data *head)
 		current = next_node;
 	} while (current != head);
 }
-
-int main(void)
-{
-	t_stack stack;
-	initialize_stack(&stack);
-	printf("Initial stack_a: ");
-	print_list(stack.stack_a);
-	printf("Initial stack_b: ");
-	print_list(stack.stack_b);
-	ft_sa(&stack.stack_a);
-	printf("stack_a after ft_sa: ");
-	print_list(stack.stack_a);
-	ft_sb(&stack.stack_b->prev);
-	printf("stack_b after ft_sb: ");
-	print_list(stack.stack_b);
-	ft_ss(&stack.stack_a, &stack.stack_b->prev);
-	printf("stack_a after ft_ss: ");
-	print_list(stack.stack_a);
-	printf("stack_b after ft_ss: ");
-	print_list(stack.stack_b);
-	free_list(stack.stack_a);
-	free_list(stack.stack_b);
-	return (0);
-}
-
