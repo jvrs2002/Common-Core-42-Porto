@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 11:15:45 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/07/29 15:03:17 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/08/06 18:12:11 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ typedef struct s_stack
 }	t_stack;
 
 t_data	*create_node(int value);
+int	ft_pop(t_data **head);
 void	append_node(t_data **head, t_data *new_node);
 void	free_list(t_data *head);
+void	ft_push(t_data **head, int data);
 void	ft_ra_rb(t_data **head);
 void	ft_rr(t_data **head_a, t_data **head_b);
 void	ft_rra_rrb(t_data **head);
