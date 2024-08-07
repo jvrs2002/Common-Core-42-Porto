@@ -6,7 +6,7 @@
 /*   By: joviribeiro <joviribeiro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:29:56 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/08/07 20:43:33 by joviribeiro      ###   ########.fr       */
+/*   Updated: 2024/08/07 22:02:23 by joviribeiro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,15 @@ void	ft_sa(t_data **head)
 	ft_push(head, second_data);
 }
 
-void	ft_sb(t_data **head) //FALTA CRIAR UM PUSH BOTTOM E POP BOTTOM PARA FUNCIONAR
+void	ft_sb(t_data **head) //FALTA CRIAR UM PUSH BOTTOM PARA FUNCIONAR
 {
 	int	last;
 	int	second_to_last;
-	t_data	*bottom;
-	t_data	*second_to_bottom;
 
 	if (*head == NULL || (*head)->next == *head)
 		return ;
-	bottom = (*head)->prev;
-	second_to_bottom = bottom->prev;
-	last = ft_pop(bottom);
-	second_to_last = ft_pop(second_to_bottom);
+	last = ft_pop_bottom(head);
+	second_to_last = ft_pop_bottom(head);
 	ft_push(*head, last);
 	ft_push(*head, second_to_last);
 }
