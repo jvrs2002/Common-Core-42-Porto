@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   swap_operations_1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joviribeiro <joviribeiro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:29:56 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/08/08 20:29:47 by joviribeiro      ###   ########.fr       */
+/*   Updated: 2024/08/26 11:59:19 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_sa_sb(t_data **head, size_t flag);
+void	ft_sa_sb(t_data **head, unsigned int flag);
 void	ft_ss(t_data **head_a, t_data **head_b);
 void	ft_pa(t_data **head_a, t_data **head_b);
 void	ft_pb(t_data **head_a, t_data **head_b);
 
-void	ft_sa_sb(t_data **head, size_t flag)
+void	ft_sa_sb(t_data **head, unsigned int flag)
 {
 	t_data	*first;
 	t_data	*second;
@@ -45,8 +45,8 @@ void	ft_sa_sb(t_data **head, size_t flag)
 
 void	ft_ss(t_data **head_a, t_data **head_b)
 {
-	ft_sa_sb(head_a);
-	ft_sa_sb(head_b);
+	ft_sa_sb(head_a, 1);
+	ft_sa_sb(head_b, 2);
 }
 
 void	ft_pa(t_data **head_a, t_data **head_b)

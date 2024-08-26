@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_aux_1.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joviribeiro <joviribeiro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:15:51 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/08/09 19:44:14 by joviribeiro      ###   ########.fr       */
+/*   Updated: 2024/08/26 16:30:32 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_append_node(t_data **head, t_data *new_node);
 void	ft_print_list(t_data *head);
 void	ft_free_list(t_data *head);
 
-t_data	*ft_new_node(int value)
+/* t_data	*ft_new_node(int value)
 {
 	t_data	*node;
 
@@ -28,9 +28,9 @@ t_data	*ft_new_node(int value)
 	node->prev = node;
 	node->next = node;
 	return (node);
-}
+} */
 
-void	ft_print_list(t_data *head)
+void	ft_print_list(t_data *head) //THIS IS ONLY TO CHECK IF IT IS SORTED
 {
 	t_data	*current;
 
@@ -47,14 +47,23 @@ void	ft_print_list(t_data *head)
 
 void	ft_free_list(t_data *head)
 {
+	t_data	*current;
+	t_data	*next_node;
+
 	if (head == NULL)
 		return ;
-	t_data *current = head;
-	t_data *next_node;
+	current = head;
 	do
 	{
 		next_node = current->next;
 		free(current);
 		current = next_node;
 	} while (current != head);
+}
+
+void	ft_free_str(char **str)
+{
+	if (str == NULL)
+		return ;
+
 }

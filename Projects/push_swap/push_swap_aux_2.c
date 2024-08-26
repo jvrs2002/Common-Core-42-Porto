@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_aux_2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joviribeiro <joviribeiro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 17:38:37 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/08/09 19:38:05 by joviribeiro      ###   ########.fr       */
+/*   Updated: 2024/08/26 16:30:33 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,32 @@
 
 int	ft_pop(t_data **head);
 void	ft_push(t_data **head, int data);
+
+
+int	ft_atoi(const char *src)
+{
+	int	i;
+	int	signal;
+	int	nbr;
+
+	nbr = 0;
+	signal = 1;
+	i = 0;
+	while ((src[i] >= 9 && src[i] <= 13) || (src[i] == 32))
+		i++;
+	if ((src[i] == '-') || (src[i] == '+'))
+	{
+		if (src[i] == '-')
+			signal *= -signal;
+		i++;
+	}
+	while (src[i] >= '0' && src[i] <= '9')
+	{
+		nbr = nbr * 10 + src[i] - 48;
+		i++;
+	}
+	return (nbr * signal);
+}
 
 int	ft_pop(t_data **head)
 {
