@@ -1,44 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 16:12:22 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/02 12:43:18 by joao-vri         ###   ########.fr       */
+/*   Created: 2024/04/26 15:31:30 by joao-vri          #+#    #+#             */
+/*   Updated: 2024/04/26 15:41:05 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *src)
+void	ft_putendl_fd(char *s, int fd)
 {
-	int	i;
-	int	signal;
-	int	nbr;
-
-	nbr = 0;
-	signal = 1;
-	i = 0;
-	while ((src[i] >= 9 && src[i] <= 13) || (src[i] == 32))
-		i++;
-	if ((src[i] == '-') || (src[i] == '+'))
-	{
-		if (src[i] == '-')
-			signal *= -signal;
-		i++;
-	}
-	while (src[i] >= '0' && src[i] <= '9')
-	{
-		nbr = nbr * 10 + src[i] - 48;
-		i++;
-	}
-	return (nbr * signal);
+	ft_putstr_fd (s, fd);
+	ft_putchar_fd ('\n', fd);
 }
 
 /* int	main(void)
 {
-	printf("%i", ft_atoi("\010 8"));
-	printf("%i", atoi("\010 8"));
+	ft_putendl_fd("If there is a newline after this, its working", 1);
+	ft_putstr_fd("Its working :)", 1);
+	ft_putchar_fd('\n', 1);
 } */

@@ -1,44 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 16:12:22 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/02 12:43:18 by joao-vri         ###   ########.fr       */
+/*   Created: 2024/04/29 16:00:03 by joao-vri          #+#    #+#             */
+/*   Updated: 2024/05/21 15:55:15 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *src)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	int	i;
-	int	signal;
-	int	nbr;
+	size_t	n;
+	char	*str;
 
-	nbr = 0;
-	signal = 1;
-	i = 0;
-	while ((src[i] >= 9 && src[i] <= 13) || (src[i] == 32))
-		i++;
-	if ((src[i] == '-') || (src[i] == '+'))
-	{
-		if (src[i] == '-')
-			signal *= -signal;
-		i++;
-	}
-	while (src[i] >= '0' && src[i] <= '9')
-	{
-		nbr = nbr * 10 + src[i] - 48;
-		i++;
-	}
-	return (nbr * signal);
+	if (!s1)
+		return (NULL);
+	while (*s1 && ft_strchr(set, *s1))
+		s1++;
+	n = ft_strlen(s1);
+	while (n && ft_strchr(set, s1[n - 1]))
+		n--;
+	str = malloc(n + 1);
+	if (!str)
+		return (NULL);
+	ft_strlcpy(str, s1, n + 1);
+	return (str);
 }
 
 /* int	main(void)
 {
-	printf("%i", ft_atoi("\010 8"));
-	printf("%i", atoi("\010 8"));
+	char	*str;
+
+	str = ft_strtrim("    a    Teste123    a    ", "a ");
+	printf("%s", str);
+	free(str);
 } */

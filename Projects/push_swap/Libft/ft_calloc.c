@@ -1,44 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 16:12:22 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/02 12:43:18 by joao-vri         ###   ########.fr       */
+/*   Created: 2024/04/24 09:54:59 by joao-vri          #+#    #+#             */
+/*   Updated: 2024/04/24 15:31:19 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *src)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	int	i;
-	int	signal;
-	int	nbr;
+	void	*ptr;
 
-	nbr = 0;
-	signal = 1;
-	i = 0;
-	while ((src[i] >= 9 && src[i] <= 13) || (src[i] == 32))
-		i++;
-	if ((src[i] == '-') || (src[i] == '+'))
+	ptr = malloc(size * nmemb);
+	if (ptr != NULL)
 	{
-		if (src[i] == '-')
-			signal *= -signal;
-		i++;
+		ft_memset(ptr, 0, size * nmemb);
+		return (ptr);
 	}
-	while (src[i] >= '0' && src[i] <= '9')
-	{
-		nbr = nbr * 10 + src[i] - 48;
-		i++;
-	}
-	return (nbr * signal);
+	return (NULL);
 }
 
 /* int	main(void)
 {
-	printf("%i", ft_atoi("\010 8"));
-	printf("%i", atoi("\010 8"));
+	char	*str1 = (char*)ft_calloc(12, sizeof(char));
+	char	str2[12] = "Teste";
+
+	ft_strcpy(str1, str2);
+	printf("%s", str1);
+
+	free(str1);
+	return (0);
 } */

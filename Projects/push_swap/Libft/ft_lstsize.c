@@ -1,44 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 16:12:22 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/02 12:43:18 by joao-vri         ###   ########.fr       */
+/*   Created: 2024/05/13 12:54:16 by joao-vri          #+#    #+#             */
+/*   Updated: 2024/05/13 16:49:12 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *src)
+int	ft_lstsize(t_list *lst)
 {
-	int	i;
-	int	signal;
-	int	nbr;
+	size_t	i;
 
-	nbr = 0;
-	signal = 1;
 	i = 0;
-	while ((src[i] >= 9 && src[i] <= 13) || (src[i] == 32))
-		i++;
-	if ((src[i] == '-') || (src[i] == '+'))
+	while (lst)
 	{
-		if (src[i] == '-')
-			signal *= -signal;
+		lst = lst->next;
 		i++;
 	}
-	while (src[i] >= '0' && src[i] <= '9')
-	{
-		nbr = nbr * 10 + src[i] - 48;
-		i++;
-	}
-	return (nbr * signal);
+	return (i);
 }
 
 /* int	main(void)
 {
-	printf("%i", ft_atoi("\010 8"));
-	printf("%i", atoi("\010 8"));
+	t_list *lst = NULL;
+	t_list *node1 = ft_lstnew("Hello ");
+	t_list *node2 = ft_lstnew("World ");
+	size_t	i;
+
+	ft_lstadd_front(&lst, node1);
+	node1->next = node2;
+
+	printf("%i", ft_lstsize(lst));
+	free(node1);
+	free(node2);
 } */

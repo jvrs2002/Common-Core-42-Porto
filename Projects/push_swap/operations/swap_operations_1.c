@@ -6,27 +6,28 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:29:56 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/08/26 11:59:19 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/02 16:36:45 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_sa_sb(t_data **head, unsigned int flag);
+void	ft_sa(t_data **head_a);
+void	ft_sb(t_data **head_b);
 void	ft_ss(t_data **head_a, t_data **head_b);
 void	ft_pa(t_data **head_a, t_data **head_b);
 void	ft_pb(t_data **head_a, t_data **head_b);
 
-void	ft_sa_sb(t_data **head, unsigned int flag)
+void	ft_sa(t_data **head_a)
 {
 	t_data	*first;
 	t_data	*second;
 	t_data	*third;
 	t_data	*last;
 
-	if (*head == NULL || (*head)->next == *head)
+	if (*head_a == NULL || (*head_a)->next == *head_a)
 		return ;
-	first = *head;
+	first = *head_a;
 	second = first->next;
 	third = second->next;
 	last = first->prev;
@@ -36,11 +37,31 @@ void	ft_sa_sb(t_data **head, unsigned int flag)
 	second->prev = last;
 	last->next = second;
 	third->prev = first;
-	*head = second;
-	if (flag == 1)
-		ft_printf("sa");
-	else if (flag == 2)
-		ft_printf("sb");
+	*head_a = second;
+	ft_printf("sa");
+}
+
+void	ft_sb(t_data **head_b)
+{
+	t_data	*first;
+	t_data	*second;
+	t_data	*third;
+	t_data	*last;
+
+	if (*head_b == NULL || (*head_b)->next == *head_b)
+		return ;
+	first = *head_b;
+	second = first->next;
+	third = second->next;
+	last = first->prev;
+	first->next = third;
+	first->prev = second;
+	second->next = first;
+	second->prev = last;
+	last->next = second;
+	third->prev = first;
+	*head_b = second;
+	ft_printf("sb");
 }
 
 void	ft_ss(t_data **head_a, t_data **head_b)

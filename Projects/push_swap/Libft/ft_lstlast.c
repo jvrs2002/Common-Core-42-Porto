@@ -1,44 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 16:12:22 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/02 12:43:18 by joao-vri         ###   ########.fr       */
+/*   Created: 2024/05/13 13:33:59 by joao-vri          #+#    #+#             */
+/*   Updated: 2024/05/13 16:48:50 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *src)
+t_list	*ft_lstlast(t_list *lst)
 {
-	int	i;
-	int	signal;
-	int	nbr;
-
-	nbr = 0;
-	signal = 1;
-	i = 0;
-	while ((src[i] >= 9 && src[i] <= 13) || (src[i] == 32))
-		i++;
-	if ((src[i] == '-') || (src[i] == '+'))
+	if (lst)
 	{
-		if (src[i] == '-')
-			signal *= -signal;
-		i++;
+		while (lst->next != NULL)
+			lst = lst->next;
+		return (lst);
 	}
-	while (src[i] >= '0' && src[i] <= '9')
-	{
-		nbr = nbr * 10 + src[i] - 48;
-		i++;
-	}
-	return (nbr * signal);
+	return (NULL);
 }
 
 /* int	main(void)
 {
-	printf("%i", ft_atoi("\010 8"));
-	printf("%i", atoi("\010 8"));
+	t_list *lst = NULL;
+	t_list *node1 = ft_lstnew("Hello ");
+	t_list *node2 = ft_lstnew("World ");
+
+	ft_lstadd_front(&lst, node2);
+	ft_lstadd_front(&lst, node1);
+	node1->next = node2;
+
+	printf("%s", (char *)(ft_lstlast(lst))->content);
+	free(node1);
+	free(node2);
 } */

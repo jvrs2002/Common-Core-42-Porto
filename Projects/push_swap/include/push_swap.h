@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 11:15:45 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/08/26 15:43:41 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/02 16:36:24 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_container
 }	t_container;
 
 int	ft_atoi(const char *str);
+int	*ft_convert_input(int ac, char **av);
 int	ft_pop(t_data **head);
 t_data	*ft_new_node(int value);
 void	ft_append_node(t_data **head, t_data *new_node);
@@ -46,7 +47,8 @@ void	ft_ra_rb(t_data **head);
 void	ft_rr(t_data **head_a, t_data **head_b);
 void	ft_rra_rrb(t_data **head);
 void	ft_rrr(t_data **head_a, t_data **head_b);
-void	ft_sa_sb(t_data **head, unsigned int flag);
+void	ft_sa(t_data **head_a);
+void	ft_sb(t_data **head_b);
 void	ft_ss(t_data **head_a, t_data **head_b);
 
 #endif

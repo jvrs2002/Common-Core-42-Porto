@@ -1,44 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 16:12:22 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/02 12:43:18 by joao-vri         ###   ########.fr       */
+/*   Created: 2024/04/19 12:09:51 by joao-vri          #+#    #+#             */
+/*   Updated: 2024/05/07 11:58:21 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *src)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int	i;
-	int	signal;
-	int	nbr;
+	const char	*ptr1;
+	const char	*ptr2;
 
-	nbr = 0;
-	signal = 1;
-	i = 0;
-	while ((src[i] >= 9 && src[i] <= 13) || (src[i] == 32))
-		i++;
-	if ((src[i] == '-') || (src[i] == '+'))
+	ptr1 = (const char *)s1;
+	ptr2 = (const char *)s2;
+	while (n-- > 0)
 	{
-		if (src[i] == '-')
-			signal *= -signal;
-		i++;
+		if (*ptr1 != *ptr2)
+			return ((unsigned char)*ptr1 - (unsigned char)*ptr2);
+		++ptr1;
+		++ptr2;
 	}
-	while (src[i] >= '0' && src[i] <= '9')
-	{
-		nbr = nbr * 10 + src[i] - 48;
-		i++;
-	}
-	return (nbr * signal);
+	return (0);
 }
-
 /* int	main(void)
 {
-	printf("%i", ft_atoi("\010 8"));
-	printf("%i", atoi("\010 8"));
+	printf("%i", ft_memcmp("TeSte", "TestE", 5));
 } */

@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:15:51 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/08/26 16:30:32 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/02 14:17:02 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,4 @@ void	ft_free_list(t_data *head)
 		free(current);
 		current = next_node;
 	} while (current != head);
-}
-
-void	ft_free_str(char **str)
-{
-	if (str == NULL)
-		return ;
-
 }

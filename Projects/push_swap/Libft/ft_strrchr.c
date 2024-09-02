@@ -1,44 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 16:12:22 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/02 12:43:18 by joao-vri         ###   ########.fr       */
+/*   Created: 2024/04/15 13:54:29 by joao-vri          #+#    #+#             */
+/*   Updated: 2024/05/09 12:23:51 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *src)
+char	*ft_strrchr(const char *s, int c)
 {
-	int	i;
-	int	signal;
-	int	nbr;
+	char	*ptr;
 
-	nbr = 0;
-	signal = 1;
-	i = 0;
-	while ((src[i] >= 9 && src[i] <= 13) || (src[i] == 32))
-		i++;
-	if ((src[i] == '-') || (src[i] == '+'))
+	ptr = NULL;
+	c %= 256;
+	while (*s)
 	{
-		if (src[i] == '-')
-			signal *= -signal;
-		i++;
+		if (*s == c)
+			ptr = (char *)s;
+		s++;
 	}
-	while (src[i] >= '0' && src[i] <= '9')
+	if (c == '\0')
 	{
-		nbr = nbr * 10 + src[i] - 48;
-		i++;
+		ptr = (char *)s;
+		return (ptr += ft_strlen(ptr));
 	}
-	return (nbr * signal);
+	return (ptr);
 }
 
-/* int	main(void)
+/* int main(void)
 {
-	printf("%i", ft_atoi("\010 8"));
-	printf("%i", atoi("\010 8"));
+	printf("%s\n", ft_strrchr("Testete", 'a'));
+	printf("%s", strrchr("Testete", 'a'));
 } */

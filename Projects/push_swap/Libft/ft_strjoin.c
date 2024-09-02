@@ -1,44 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 16:12:22 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/02 12:43:18 by joao-vri         ###   ########.fr       */
+/*   Created: 2024/04/26 19:04:46 by joao-vri          #+#    #+#             */
+/*   Updated: 2024/05/09 12:48:42 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *src)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	i;
-	int	signal;
-	int	nbr;
+	char	*str;
+	size_t	len_s1;
+	size_t	len_s2;
 
-	nbr = 0;
-	signal = 1;
-	i = 0;
-	while ((src[i] >= 9 && src[i] <= 13) || (src[i] == 32))
-		i++;
-	if ((src[i] == '-') || (src[i] == '+'))
-	{
-		if (src[i] == '-')
-			signal *= -signal;
-		i++;
-	}
-	while (src[i] >= '0' && src[i] <= '9')
-	{
-		nbr = nbr * 10 + src[i] - 48;
-		i++;
-	}
-	return (nbr * signal);
+	if (!s1 || !s2)
+		return (NULL);
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2) + 1;
+	str = (char *)malloc(sizeof(char) * (len_s1 + len_s2));
+	if (!str)
+		return (NULL);
+	ft_strlcpy(str, (char *)s1, len_s1 + len_s2);
+	ft_strlcpy(str + len_s1, (char *)s2, len_s2);
+	return (str);
 }
 
 /* int	main(void)
 {
-	printf("%i", ft_atoi("\010 8"));
-	printf("%i", atoi("\010 8"));
+	char	str[12] = "dsafagdsgds";
+
+	printf("%s", ft_strjoin(str, "12ds3"));
 } */

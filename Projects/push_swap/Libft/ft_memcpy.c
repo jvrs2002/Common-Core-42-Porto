@@ -1,44 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 16:12:22 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/02 12:43:18 by joao-vri         ###   ########.fr       */
+/*   Created: 2024/04/18 16:43:01 by joao-vri          #+#    #+#             */
+/*   Updated: 2024/04/24 15:30:44 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *src)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	int	i;
-	int	signal;
-	int	nbr;
+	const char	*ptr2;
+	char		*ptr1;
 
-	nbr = 0;
-	signal = 1;
-	i = 0;
-	while ((src[i] >= 9 && src[i] <= 13) || (src[i] == 32))
-		i++;
-	if ((src[i] == '-') || (src[i] == '+'))
-	{
-		if (src[i] == '-')
-			signal *= -signal;
-		i++;
-	}
-	while (src[i] >= '0' && src[i] <= '9')
-	{
-		nbr = nbr * 10 + src[i] - 48;
-		i++;
-	}
-	return (nbr * signal);
+	ptr1 = dest;
+	ptr2 = src;
+	if (ptr1 == NULL && ptr2 == NULL)
+		return (NULL);
+	else
+		while (n-- > 0)
+			*ptr1++ = *ptr2++;
+	return (dest);
 }
 
 /* int	main(void)
 {
-	printf("%i", ft_atoi("\010 8"));
-	printf("%i", atoi("\010 8"));
+	char csrc[100] = "Teste123";
+	ft_memcpy(csrc + 5, csrc, strlen(csrc) + 1);
+	printf("%s", csrc);
+	return 0;
 } */
