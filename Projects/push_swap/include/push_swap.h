@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joviribeiro <joviribeiro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 11:15:45 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/03 17:02:01 by joviribeiro      ###   ########.fr       */
+/*   Updated: 2024/09/04 11:54:36 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 # define PUSH_SWAP_H
 
-# include "ft_printf.h"
-# include "libft.h"
+# include "../ft_printf/ft_printf.h"
+# include "../Libft/libft.h"
 
 typedef struct s_data
 {
@@ -34,14 +34,13 @@ typedef struct s_container
 }	t_container;
 
 int	ft_atoi(const char *str);
-int	*ft_convert_input(int ac, char **av);
+int	*ft_parsing_multiple_arguments(int ac, char **av);
+int	*ft_parsing_one_argument(char **av);
 int	ft_pop(t_data **head);
-t_data	*ft_new_node(int value);
-void	ft_append_node(t_data **head, t_data *new_node);
+void	ft_free_array(int i, char **strs);
 void	ft_free_list(t_data *head);
 void	ft_pa(t_data **head_a, t_data **head_b);
 void	ft_pb(t_data **head_a, t_data **head_b);
-void	ft_print_list(t_data *head);
 void	ft_push(t_data **head, int data);
 void	ft_ra_rb(t_data **head);
 void	ft_rr(t_data **head_a, t_data **head_b);
