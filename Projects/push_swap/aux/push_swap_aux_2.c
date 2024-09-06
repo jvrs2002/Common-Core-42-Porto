@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_aux_2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joviribeiro <joviribeiro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 17:38:37 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/04 12:02:47 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/06 07:51:56 by joviribeiro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-int	ft_pop(t_data **head);
-void	ft_push(t_data **head, int data);
 
 int	ft_pop(t_data **head)
 {

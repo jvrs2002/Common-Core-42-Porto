@@ -3,26 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joviribeiro <joviribeiro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:30:37 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/04 12:10:39 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/06 08:38:08 by joviribeiro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	*ft_parsing_multiple_arguments(int ac, char **av);
-int	*ft_parsing_one_argument(char **av);
-
-int	*ft_parsing_multiple_arguments(int ac, char **av)
+int	*ft_parsing_multiple_arguments(char **av, size_t array_count)
 {
 	char **input;
 	int	*nbrs;
 	int	i;
-	int	array_count;
 
-	array_count = ac - 1;
 	input = NULL;
 	i = 0;
 	nbrs = (int *)malloc(sizeof(int) * (array_count));
@@ -36,31 +31,56 @@ int	*ft_parsing_multiple_arguments(int ac, char **av)
 	return (nbrs);
 }
 
-int	*ft_parsing_one_argument(char **av)
+int	*ft_parsing_one_argument(char **av, size_t array_count)
 {
 	char **input;
 	int	*nbrs;
 	int	i;
-	int	array_count;
 
-	array_count = 0;
 	input = NULL;
-	i = -1;
+	nbrs = NULL;
+	i = 0;
 	input = ft_split(av[1], ' ');
 	if (!input)
 		return (NULL);
-	while (input[array_count])
-		++array_count;
 	nbrs = (int *)malloc(sizeof(int) * (array_count));
 	if (!nbrs)
 	{
 		ft_free_array(array_count, input);
 		return (NULL);
 	}
-	while (++i < array_count)
+	while (i < array_count)
+	{
 		nbrs[i] = ft_atoi(input[i]);
+		++i;
+	}
 	ft_free_array(array_count, input);
 	return (nbrs);
+}
+
+size_t	ft_input_count(int ac, char *str, char c) //MUDAR NOME DPS
+{
+	size_t	i;
+	size_t	n;
+
+	i = 0;
+	n = 0;
+	if (ac < 2)
+		return (0);
+	if (ac == 2)
+		return (n + 1);
+	while (str[i] != '\0')
+	{
+		if (str[i] != c)
+		{
+			++n;
+			while (str[i] != '\0' && str[i] != c)
+				++i;
+		}
+		else
+			++i;
+	}
+	return (n);
 }
 
 /* int main(int ac, char **av)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joviribeiro <joviribeiro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 11:15:45 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/04 11:54:36 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/06 08:36:33 by joviribeiro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,10 @@ typedef struct s_container
 }	t_container;
 
 int	ft_atoi(const char *str);
-int	*ft_parsing_multiple_arguments(int ac, char **av);
-int	*ft_parsing_one_argument(char **av);
+int	*ft_parsing_multiple_arguments(char **av, size_t array_count);
+int	*ft_parsing_one_argument(char **av, size_t arrray_count);
 int	ft_pop(t_data **head);
+size_t	ft_input_count(int ac, const char *str, char c);
 void	ft_free_array(int i, char **strs);
 void	ft_free_list(t_data *head);
 void	ft_pa(t_data **head_a, t_data **head_b);
