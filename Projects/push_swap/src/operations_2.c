@@ -3,37 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   swap_operations_2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joviribeiro <joviribeiro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 12:04:46 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/06 07:52:52 by joviribeiro      ###   ########.fr       */
+/*   Updated: 2024/09/06 11:58:34 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	ft_ra_rb(t_data **head)
+void	ft_ra(t_data **head_a, int flag)
 {
-	if (!head || !*head || (*head)->next == *head)
+	if (!head_a || !*head_a || (*head_a)->next == *head_a)
 		return ;
-	*head = (*head)->next;
+	*head_a = (*head_a)->next;
+	if (flag == 1)
+		write(1, "ra", 2);
+}
+
+void	ft_rb(t_data **head_b, int flag)
+{
+	if (!head_b || !*head_b || (*head_b)->next == *head_b)
+		return ;
+	*head_b = (*head_b)->next;
+	if (flag == 1)
+		write(1, "rb", 2);
 }
 
 void	ft_rr(t_data **head_a, t_data **head_b)
 {
-	ft_ra_rb(head_a);
-	ft_ra_rb(head_b);
-}
-
-void	ft_rra_rrb(t_data **head)
-{
-	if (!head || !*head || (*head)->next == *head)
-		return ;
-	*head = (*head)->prev;
-}
-
-void	ft_rrr(t_data **head_a, t_data **head_b)
-{
-	ft_rra_rrb(head_a);
-	ft_rra_rrb(head_b);
+	ft_ra(head_a, 0);
+	ft_rb(head_b, 0);
+	write(1, "rr", 2);
 }

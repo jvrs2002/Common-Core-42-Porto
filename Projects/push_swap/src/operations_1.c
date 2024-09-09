@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   swap_operations_1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joviribeiro <joviribeiro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:29:56 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/05 17:53:12 by joviribeiro      ###   ########.fr       */
+/*   Updated: 2024/09/06 11:59:12 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	ft_sa(t_data **head_a)
+void	ft_sa(t_data **head_a, int flag)
 {
 	t_data	*first;
 	t_data	*second;
@@ -32,10 +32,11 @@ void	ft_sa(t_data **head_a)
 	last->next = second;
 	third->prev = first;
 	*head_a = second;
-	ft_printf("sa");
+	if (flag == 1)
+		write(1, "sa", 2);
 }
 
-void	ft_sb(t_data **head_b)
+void	ft_sb(t_data **head_b, int flag)
 {
 	t_data	*first;
 	t_data	*second;
@@ -55,13 +56,15 @@ void	ft_sb(t_data **head_b)
 	last->next = second;
 	third->prev = first;
 	*head_b = second;
-	ft_printf("sb");
+	if (flag == 1)
+		write(1, "sb", 2);
 }
 
 void	ft_ss(t_data **head_a, t_data **head_b)
 {
-	ft_sa_sb(head_a, 1);
-	ft_sa_sb(head_b, 2);
+	ft_sa(head_a, 0);
+	ft_sb(head_b, 0);
+	write(1, "ss", 2);
 }
 
 void	ft_pa(t_data **head_a, t_data **head_b)
@@ -72,6 +75,7 @@ void	ft_pa(t_data **head_a, t_data **head_b)
 		return ;
 	first_data_b = ft_pop(head_b);
 	ft_push(head_a, first_data_b);
+	write(1, "pa", 2);
 }
 
 void	ft_pb(t_data **head_a, t_data **head_b)
@@ -82,4 +86,5 @@ void	ft_pb(t_data **head_a, t_data **head_b)
 		return ;
 	first_data_a = ft_pop(head_a);
 	ft_push(head_b, first_data_a);
+	write(1, "pb", 2);
 }
