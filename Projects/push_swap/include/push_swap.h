@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 11:15:45 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/09 13:21:34 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/09 16:24:01 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 # define PUSH_SWAP_H
 
 # include "../Libft/libft.h"
+# include "limits.h"
 
 typedef struct s_data
 {
 	int			number;
-	short	checkpoint;
 	size_t	i;
 	struct s_data	*next;
 	struct s_data	*prev;

@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 11:43:30 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/09 13:17:41 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/09 16:56:50 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	main(int ac, char **av)
 
 	nbrs = NULL;
 	array_count = ft_input_count(ac, av[1], " ");
+	if (!array_count)
+		return (write(1, "Error\n", 6));
 	if (array_count == 0)
 		return (-1);
 	else if (array_count == 1)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joviribeiro <joviribeiro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:30:37 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/06 08:38:08 by joviribeiro      ###   ########.fr       */
+/*   Updated: 2024/09/09 16:54:24 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	*ft_parsing_multiple_arguments(char **av, size_t array_count)
 		return (NULL);
 	while (i < array_count)
 	{
-		nbrs[i] = ft_atoi(av[i + 1]);
+		nbrs[i] = ft_atol(av[i + 1]);
 		++i;
 	}
 	return (nbrs);
@@ -51,14 +51,14 @@ int	*ft_parsing_one_argument(char **av, size_t array_count)
 	}
 	while (i < array_count)
 	{
-		nbrs[i] = ft_atoi(input[i]);
+		nbrs[i] = ft_atol(input[i]);
 		++i;
 	}
 	ft_free_array(array_count, input);
 	return (nbrs);
 }
 
-size_t	ft_input_count(int ac, char *str, char c) //MUDAR NOME DPS
+size_t	ft_input_count(int ac, char *str, char c)
 {
 	size_t	i;
 	size_t	n;
@@ -75,7 +75,11 @@ size_t	ft_input_count(int ac, char *str, char c) //MUDAR NOME DPS
 		{
 			++n;
 			while (str[i] != '\0' && str[i] != c)
+			{
+				if (str[i] != c && (str[i] < '0' || str[i] > '9'))
+					break ;
 				++i;
+			}
 		}
 		else
 			++i;
