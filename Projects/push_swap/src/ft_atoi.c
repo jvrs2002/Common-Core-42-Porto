@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 16:12:22 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/09 16:54:36 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/10 15:01:56 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	ft_atol(const char *src)
+int	ft_atoi(const char *src)
 {
 	int	i;
 	int	signal;
@@ -37,6 +37,6 @@ long	ft_atol(const char *src)
 	if (src[i] < '0' || src[i] > '9' && src[i] != ' ')
 		return ;
 	if (nbr > INT_MAX || nbr < INT_MIN)
-		break ;
-	return (nbr * signal);
+		return ;
+	return ((int)nbr * signal);
 }

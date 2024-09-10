@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_aux_1.c                                  :+:      :+:    :+:   */
+/*   aux_1.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joviribeiro <joviribeiro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:15:51 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/05 17:53:33 by joviribeiro      ###   ########.fr       */
+/*   Updated: 2024/09/10 11:43:24 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	ft_free_array(int i, char **strs)
+void	*ft_free_array(int i, char **strs)
 {
 	while (i > 0)
 		free(strs[--i]);
 	free(strs);
+	return (NULL);
 }
 
 void	ft_free_list(t_data *head)

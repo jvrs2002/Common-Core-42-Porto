@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 11:43:30 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/09 16:56:50 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/10 11:53:54 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	main(int ac, char **av)
 		nbrs = ft_parsing_one_argument(av, array_count);
 	else
 		nbrs = ft_parsing_multiple_arguments(av, array_count);
+	if (!nbrs)
+		return (write(1, "Error\n", 6));
 	ft_push_to_container(container.head_a, nbrs, array_count);
 	return (0);
 }
