@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_operations_1.c                                :+:      :+:    :+:   */
+/*   operations_1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:29:56 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/06 11:59:12 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/11 14:15:25 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_sa(t_data **head_a, int flag)
 	third->prev = first;
 	*head_a = second;
 	if (flag == 1)
-		write(1, "sa", 2);
+		write(1, "sa\n", 3);
 }
 
 void	ft_sb(t_data **head_b, int flag)
@@ -57,14 +57,14 @@ void	ft_sb(t_data **head_b, int flag)
 	third->prev = first;
 	*head_b = second;
 	if (flag == 1)
-		write(1, "sb", 2);
+		write(1, "sb\n", 3);
 }
 
 void	ft_ss(t_data **head_a, t_data **head_b)
 {
 	ft_sa(head_a, 0);
 	ft_sb(head_b, 0);
-	write(1, "ss", 2);
+	write(1, "ss\n", 3);
 }
 
 void	ft_pa(t_data **head_a, t_data **head_b)
@@ -75,7 +75,7 @@ void	ft_pa(t_data **head_a, t_data **head_b)
 		return ;
 	first_data_b = ft_pop(head_b);
 	ft_push(head_a, first_data_b);
-	write(1, "pa", 2);
+	write(1, "pa\n", 3);
 }
 
 void	ft_pb(t_data **head_a, t_data **head_b)
@@ -86,5 +86,5 @@ void	ft_pb(t_data **head_a, t_data **head_b)
 		return ;
 	first_data_a = ft_pop(head_a);
 	ft_push(head_b, first_data_a);
-	write(1, "pb", 2);
+	write(1, "pb\n", 3);
 }

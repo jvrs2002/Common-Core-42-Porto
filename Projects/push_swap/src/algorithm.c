@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 10:12:20 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/11 11:47:04 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/11 14:48:39 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,37 +21,35 @@ void	ft_init_container(t_data **head_a, int *nbrs, size_t array_count)
 	}
 }
 
-
-
 int	*ft_bubble_sort(int *nbrs, size_t size_checkpoint)
 {
 	size_t	i;
-	size_t	j;
 	int	swap;
 	int	*nbrs_sorted;
 
-	i = 0;
-	j = 0;
-	nbrs_sorted = malloc(sizeof(int) * size_checkpoint);
+	nbrs_sorted = (int *)malloc(sizeof(int) * size_checkpoint);
 	if (!nbrs_sorted)
 		return (NULL);
+	ft_memcpy(nbrs_sorted, nbrs, size_checkpoint * sizeof(int));
 	while (size_checkpoint != 0)
 	{
-		while (i < size_checkpoint)
+		i = 0;
+		while (i < size_checkpoint - 1)
 		{
-			if (nbrs[i] > nbrs[i + 1])
-				swap = nbrs[i];
+			if (nbrs_sorted[i] > nbrs_sorted[i + 1])
+			{
+				swap = nbrs_sorted[i];
+				nbrs_sorted[i] = nbrs_sorted[i + 1];
+				nbrs_sorted[i + 1] = swap;
+			}
 			++i;
 		}
-		nbrs_sorted[size_checkpoint] = swap;
-		++j;
 		--size_checkpoint;
-		i = 0;
-		swap = nbrs[i];
 	}
+	return (nbrs_sorted);
 }
 
-int	ft_calc_median (int *nbrs, size_t container_size)
+int	ft_calc_median (int *nbrs_sorted, size_t container_size)
 {
 	int	i;
 	int	median;
@@ -69,4 +67,25 @@ int	ft_calc_median (int *nbrs, size_t container_size)
 	else if (container_size % 2 != 0)
 		median = nbrs[i];
 	return (median);
+}
+
+void	leave_3(t_data **head_a, t_data **head_b, size_t size_checkpoint_a, int *nbrs)
+{
+	int	i;
+	int median;
+	t_data	*node;
+
+	i = 0;
+	node = head_a;
+
+	while (size_checkpoint_a > 3)
+	{
+		while (i < size_checkpoint_a)
+		{
+			if (node->number > median)
+				ft_pb(head_a, head_b);
+			++i;
+		}
+		median = ft_calc_median(ft_bubble_sort(nbrs, size_checkpoint_a), size_checkpoint_a);
+	}
 }
