@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 11:43:30 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/11 11:34:59 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/11 14:52:59 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	main(int ac, char **av)
 	if (!nbrs)
 		return (write(1, "Error\n", 6));
 	ft_init_container(container.head_a, nbrs, array_count);
+	ft_initial_push(container.head_a, container.head_b, container.size_a_checkpoint, int *nbrs);
 	return (0);
 }
 
