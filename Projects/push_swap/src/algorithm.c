@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joviribeiro <joviribeiro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 10:12:20 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/10 15:05:53 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/11 08:17:23 by joviribeiro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,28 @@ void	ft_push_to_container(t_data **head_a, int *nbrs, size_t array_count)
 
 int	*ft_bubble_sort(int *nbrs, size_t size_checkpoint)
 {
+	size_t	i;
+	size_t	j;
 	int	*nbrs_sorted;
+
+	i = 0;
+	j = 1;
 	nbrs_sorted = malloc(sizeof(int) * size_checkpoint);
+	if (!nbrs_sorted)
+		return (NULL);
+	while (j < size_checkpoint)
+	{
+		while (i + 1 <= size_checkpoint)
+		{
+			if (nbrs[i] > nbrs[i + 1])
+				nbrs_sorted[i] = nbrs[i + 1];
+			else
+				nbrs_sorted[i] = nbrs[i];
+			++i;
+		}
+		--j;
+		--size_checkpoint;
+	}
 }
 
 int	ft_calc_median (int *nbrs, size_t container_size)
