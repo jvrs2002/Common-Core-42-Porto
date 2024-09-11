@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joviribeiro <joviribeiro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 10:12:20 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/11 08:17:23 by joviribeiro      ###   ########.fr       */
+/*   Updated: 2024/09/11 11:47:04 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	ft_push_to_container(t_data **head_a, int *nbrs, size_t array_count)
+void	ft_init_container(t_data **head_a, int *nbrs, size_t array_count)
 {
 	while (array_count != 0)
 	{
@@ -27,25 +27,27 @@ int	*ft_bubble_sort(int *nbrs, size_t size_checkpoint)
 {
 	size_t	i;
 	size_t	j;
+	int	swap;
 	int	*nbrs_sorted;
 
 	i = 0;
-	j = 1;
+	j = 0;
 	nbrs_sorted = malloc(sizeof(int) * size_checkpoint);
 	if (!nbrs_sorted)
 		return (NULL);
-	while (j < size_checkpoint)
+	while (size_checkpoint != 0)
 	{
-		while (i + 1 <= size_checkpoint)
+		while (i < size_checkpoint)
 		{
 			if (nbrs[i] > nbrs[i + 1])
-				nbrs_sorted[i] = nbrs[i + 1];
-			else
-				nbrs_sorted[i] = nbrs[i];
+				swap = nbrs[i];
 			++i;
 		}
-		--j;
+		nbrs_sorted[size_checkpoint] = swap;
+		++j;
 		--size_checkpoint;
+		i = 0;
+		swap = nbrs[i];
 	}
 }
 
