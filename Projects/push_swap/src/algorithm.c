@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joviribeiro <joviribeiro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 10:12:20 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/12 12:13:02 by joviribeiro      ###   ########.fr       */
+/*   Updated: 2024/09/13 12:20:07 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-void	ft_init_container(t_data **head_a, int *nbrs, size_t array_count)
-{
-	while (array_count != 0)
-	{
-		ft_push(head_a, nbrs[array_count]);
-		--array_count;
-	}
-}
 
 int	*ft_bubble_sort(int *nbrs, size_t size_checkpoint)
 {
