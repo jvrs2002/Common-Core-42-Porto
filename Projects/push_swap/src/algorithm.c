@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joviribeiro <joviribeiro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 10:12:20 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/11 14:50:47 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/12 12:13:02 by joviribeiro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,13 @@ int	ft_calc_median (int *nbrs_sorted, size_t container_size)
 	i = container_size / 2;
 	if (container_size % 2 == 0)
 	{
-		median = nbrs[i - 1] + nbrs[i];
+		median = nbrs_sorted[i - 1] + nbrs_sorted[i];
 		if (median % 2 != 0)
 			++median;
 		median /= 2;
 	}
 	else if (container_size % 2 != 0)
-		median = nbrs[i];
+		median = nbrs_sorted[i];
 	return (median);
 }
 
