@@ -6,11 +6,11 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 16:12:22 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/10 15:01:56 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/17 12:26:44 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 int	ft_atoi(const char *src)
 {
@@ -34,9 +34,7 @@ int	ft_atoi(const char *src)
 		nbr = nbr * 10 + src[i] - 48;
 		i++;
 	}
-	if (src[i] < '0' || src[i] > '9' && src[i] != ' ')
-		return ;
 	if (nbr > INT_MAX || nbr < INT_MIN)
-		return ;
+		return (0);
 	return ((int)nbr * signal);
 }

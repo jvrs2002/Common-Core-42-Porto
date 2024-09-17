@@ -6,11 +6,22 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 12:50:15 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/05/13 15:27:00 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/17 09:41:33 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/push_swap.h"
+
+
+size_t	ft_strlen(const char *c)
+{
+	size_t	i;
+
+	i = 0;
+	while (c[i])
+		++i;
+	return (i);
+}
 
 size_t	ft_untilnext(const char *str, char c)
 {
@@ -76,6 +87,23 @@ char	**ft_split(char const *s, char c)
 	}
 	strs[i] = NULL;
 	return (strs);
+}
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	if (n != 0)
+	{
+		while (src[i] != '\0' && i < n - 1)
+		{
+			dst[i] = src[i];
+			++i;
+		}
+		dst[i] = '\0';
+	}
+	return (ft_strlen(src));
 }
 
 /* int	main(void)

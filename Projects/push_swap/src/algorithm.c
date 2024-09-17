@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 10:12:20 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/13 12:20:07 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:47:45 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	*ft_bubble_sort(int *nbrs, size_t size_checkpoint)
 	nbrs_sorted = (int *)malloc(sizeof(int) * size_checkpoint);
 	if (!nbrs_sorted)
 		return (NULL);
-	ft_memcpy(nbrs_sorted, nbrs, size_checkpoint * sizeof(int));
+	memcpy(nbrs_sorted, nbrs, size_checkpoint * sizeof(int)); //MUDAR DPS PRA FT
 	while (size_checkpoint != 0)
 	{
 		i = 0;
@@ -60,26 +60,25 @@ int	ft_calc_median (int *nbrs_sorted, size_t container_size)
 	return (median);
 }
 
-void	ft_initial_push(t_data **head_a, t_data **head_b, size_t size_checkpoint_a, int *nbrs)
+void	ft_initial_push(t_data **head_a, t_data **head_b, size_t *size_checkpoint_a, int *nbrs)
 {
-	int	i;
+	size_t	i;
 	int median;
 	t_data	*node;
 
 	i = 0;
-	node = head_a;
-
-	while (size_checkpoint_a > 3)
+	node = *head_a;
+	while (*size_checkpoint_a > 3)
 	{
-		while (i < size_checkpoint_a)
+		while (i < *size_checkpoint_a)
 		{
 			if (node->number > median)
 			{
 				ft_pb(head_a, head_b);
-				--size_checkpoint_a;
+				--(*size_checkpoint_a);
 			}
 			++i;
 		}
-		median = ft_calc_median(ft_bubble_sort(nbrs, size_checkpoint_a), size_checkpoint_a);
+		median = ft_calc_median(ft_bubble_sort(nbrs, *size_checkpoint_a), *size_checkpoint_a);
 	}
 }

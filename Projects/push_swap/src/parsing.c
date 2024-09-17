@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:30:37 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/10 11:21:43 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:24:34 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,52 +29,55 @@ int	*ft_parsing_multiple_arguments(char **av, size_t array_count)
 		if (!nbrs[i])
 		{
 			free(nbrs);
-			return ;
+			return (NULL);
 		}
 		++i;
 	}
 	return (nbrs);
 }
 
-int	*ft_parsing_one_argument(char **av, size_t array_count)
+int	*ft_parsing_one_argument(char **av, size_t *array_count)
 {
 	char **input;
 	int	*nbrs;
 	int	i;
 
+	*array_count = ft_input_count(av[1], ' ');
 	input = NULL;
 	nbrs = NULL;
 	i = -1;
 	input = ft_split(av[1], ' ');
 	if (!input)
 		return (NULL);
-	nbrs = (int *)malloc(sizeof(int) * (array_count));
+	nbrs = (int *)malloc(sizeof(int) * (*array_count));
 	if (!nbrs)
-		return (ft_free_array(array_count, input));
-	while (++i < array_count)
+		return (ft_free_array(*array_count, input));
+	while (++i < *array_count)
 	{
 		nbrs[i] = ft_atoi(input[i]);
 		if (!nbrs[i])
 		{
 			free(nbrs);
-			return (ft_free_array(array_count, input));
+			return (ft_free_array(*array_count, input));
 		}
 	}
-	ft_free_array(array_count, input);
+	i = 0;
+	while (nbrs[i])
+	{
+		printf("%i ", nbrs[i]);
+		i++;
+	}
+	ft_free_array(*array_count, input);
 	return (nbrs);
 }
 
-size_t	ft_input_count(int ac, char *str, char c)
+size_t	ft_input_count(const char *str, char c)
 {
 	size_t	i;
 	size_t	n;
 
 	i = 0;
 	n = 0;
-	if (ac < 2)
-		return (0);
-	if (ac == 2)
-		return (n + 1);
 	while (str[i] != '\0')
 	{
 		if (str[i] != c)

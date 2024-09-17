@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:15:51 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/13 11:25:30 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:22:38 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 void	ft_init_container(t_data **head_a, int *nbrs, size_t array_count)
 {
-	while (array_count != 0)
+	if (!head_a)
+		return;
+	*head_a = NULL;
+	while (array_count > 0)
 	{
-		ft_push(head_a, nbrs[array_count]);
+		ft_push(head_a, nbrs[array_count - 1]);
 		--array_count;
 	}
 }
@@ -44,4 +47,17 @@ void	ft_free_list(t_data *head)
 		node = temp;
 	}
 	free(head);
+}
+
+void	ft_print_list(t_data **head)
+{
+	if (*head == NULL)
+		return ;
+	t_data *temp = *head;
+	do
+	{
+		printf("%d ", temp->number);
+		temp = temp->next;
+	} while (temp != *head);
+	printf("\n");
 }

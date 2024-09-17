@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 17:38:37 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/10 11:42:37 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:23:42 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_push(t_data **head, int data)
 	t_data	*new_node;
 	t_data	*last;
 
-	new_node = (t_data *)malloc(sizeof(t_data) * 1);
+	new_node = (t_data *)malloc(sizeof(t_data));
 	if (!new_node)
 		return ;
 	new_node->number = data;
