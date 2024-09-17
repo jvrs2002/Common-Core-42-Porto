@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 10:12:20 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/17 15:47:45 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/17 17:19:31 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	ft_initial_push(t_data **head_a, t_data **head_b, size_t *size_checkpoint_a
 
 	i = 0;
 	node = *head_a;
+	printf("size: %zu\n", *size_checkpoint_a);
 	while (*size_checkpoint_a > 3)
 	{
 		while (i < *size_checkpoint_a)
@@ -80,5 +81,6 @@ void	ft_initial_push(t_data **head_a, t_data **head_b, size_t *size_checkpoint_a
 			++i;
 		}
 		median = ft_calc_median(ft_bubble_sort(nbrs, *size_checkpoint_a), *size_checkpoint_a);
+		printf("mediana: %i\n", median);
 	}
 }
