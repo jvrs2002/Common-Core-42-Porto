@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joviribeiro <joviribeiro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 11:15:45 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/17 16:28:01 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/18 09:49:52 by joviribeiro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ void	*ft_free_array(int i, char **strs);
 void	ft_free_list(t_data *head);
 int	ft_pop(t_data **head);
 void	ft_push(t_data **head, int data);
-void	ft_initial_push(t_data **head_a, t_data **head_b, size_t *size_checkpoint_a, int *nbrs);
+void	ft_initial_push(t_data **head_a, t_data **head_b, size_t *size_a, size_t *size_b, int *nbrs);
 void	ft_pa(t_data **head_a, t_data **head_b);
-void	ft_pb(t_data **head_a, t_data **head_b);
+void	ft_pb(t_data **head_a, t_data **head_b, size_t *size_a, size_t *size_b);
 void	ft_ra(t_data **head, int flag);
 void	ft_rb(t_data **head, int flag);
 void	ft_rr(t_data **head_a, t_data **head_b);
