@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joviribeiro <joviribeiro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 11:43:30 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/18 09:55:29 by joviribeiro      ###   ########.fr       */
+/*   Updated: 2024/09/18 12:39:52 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,14 @@ int	main(int ac, char **av)
 	ft_init_container(&container.head_a, nbrs, array_count);
 	ft_initial_push(&container.head_a, &container.head_b, &container.size_a_checkpoint, &container.size_b_checkpoint, nbrs);
 	printf("size of a: %zu\n", container.size_a_checkpoint);
+
+
 	ft_print_list(&container.head_a);
 	write(1, "\n\n", 2);
 	printf("size of b: %zu\n", container.size_b_checkpoint);
 	ft_print_list(&container.head_b);
+
+
 	free(nbrs);
 	return (0);
 }

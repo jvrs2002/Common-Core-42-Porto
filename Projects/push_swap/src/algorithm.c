@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joviribeiro <joviribeiro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 10:12:20 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/18 11:05:43 by joviribeiro      ###   ########.fr       */
+/*   Updated: 2024/09/18 15:34:38 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,23 +64,27 @@ void	ft_initial_push(t_data **head_a, t_data **head_b, size_t *size_a, size_t *s
 {
 	size_t	i;
 	int median;
-	t_data	*node;
 
 	i = 0;
-	node = *head_a;
 	nbrs = ft_bubble_sort(nbrs, *size_a);
 	while (*size_a > 3)
 	{
 		median = ft_calc_median(nbrs, *size_a);
-		printf("mediana: %i\n\n", median);
+		printf("Median: %i\n", median);
 		while (i < *size_a)
 		{
-			if (node->number > median && *size_a > 3)
+			if ((*head_a)->number < median && *size_a > 3)
+			{
 				ft_pb(head_a, head_b, size_a, size_b);
+				i = 0;
+			}
 			else
-				node = node->next;
-			++i;
+			{
+				ft_ra(head_a, 1);
+				++i;
+			}
+			if (*head_a == NULL)
+                break;
 		}
 	}
-	median = ft_calc_median(nbrs, *size_a);
 }

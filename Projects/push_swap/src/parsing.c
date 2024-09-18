@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joviribeiro <joviribeiro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:30:37 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/18 11:03:02 by joviribeiro      ###   ########.fr       */
+/*   Updated: 2024/09/18 12:04:24 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	*ft_parsing_multiple_arguments(char **av, size_t array_count)
 	while (i < array_count)
 	{
 		nbrs[i] = ft_atoi(av[i + 1]);
-		if (!nbrs[i])
+		if (!nbrs[i] && *av[i + 1] != '0')
 		{
 			free(nbrs);
 			return (NULL);
@@ -55,7 +55,7 @@ int	*ft_parsing_one_argument(char **av, size_t *array_count)
 	while (++i < *array_count)
 	{
 		nbrs[i] = ft_atoi(input[i]);
-		if (!nbrs[i])
+		if (!nbrs[i] && *input[i] != '0')
 		{
 			free(nbrs);
 			return (ft_free_array(*array_count, input));
