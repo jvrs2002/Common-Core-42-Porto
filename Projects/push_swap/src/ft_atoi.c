@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joviribeiro <joviribeiro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 16:12:22 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/17 12:26:44 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/18 11:01:32 by joviribeiro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_atoi(const char *src)
 	if ((src[i] == '-') || (src[i] == '+'))
 	{
 		if (src[i] == '-')
-			signal *= -signal;
+			signal = -signal;
 		i++;
 	}
 	while (src[i] >= '0' && src[i] <= '9')

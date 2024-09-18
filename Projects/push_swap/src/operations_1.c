@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations_1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joviribeiro <joviribeiro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:29:56 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/11 14:15:25 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/18 09:49:38 by joviribeiro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	ft_pa(t_data **head_a, t_data **head_b)
 	write(1, "pa\n", 3);
 }
 
-void	ft_pb(t_data **head_a, t_data **head_b)
+void	ft_pb(t_data **head_a, t_data **head_b, size_t *size_a, size_t *size_b)
 {
 	int	first_data_a;
 
@@ -86,5 +86,7 @@ void	ft_pb(t_data **head_a, t_data **head_b)
 		return ;
 	first_data_a = ft_pop(head_a);
 	ft_push(head_b, first_data_a);
+	--(*size_a);
+	++(*size_b);
 	write(1, "pb\n", 3);
 }

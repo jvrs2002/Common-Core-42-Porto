@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joviribeiro <joviribeiro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:30:37 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/17 18:37:57 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/18 11:03:02 by joviribeiro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	*ft_parsing_multiple_arguments(char **av, size_t *array_count)
+int	*ft_parsing_multiple_arguments(char **av, size_t array_count)
 {
 	char **input;
 	int	*nbrs;
@@ -20,10 +20,10 @@ int	*ft_parsing_multiple_arguments(char **av, size_t *array_count)
 
 	input = NULL;
 	i = 0;
-	nbrs = (int *)malloc(sizeof(int) * (*array_count));
+	nbrs = (int *)malloc(sizeof(int) * (array_count));
 	if (!nbrs)
 		return (NULL);
-	while (i < *array_count)
+	while (i < array_count)
 	{
 		nbrs[i] = ft_atoi(av[i + 1]);
 		if (!nbrs[i])
