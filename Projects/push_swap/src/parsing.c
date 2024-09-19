@@ -6,13 +6,13 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:30:37 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/18 12:04:24 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/19 13:30:53 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	*ft_parsing_multiple_arguments(char **av, size_t array_count)
+int	*ft_parse_multiple_arguments(char **av, size_t array_count)
 {
 	char **input;
 	int	*nbrs;
@@ -36,7 +36,7 @@ int	*ft_parsing_multiple_arguments(char **av, size_t array_count)
 	return (nbrs);
 }
 
-int	*ft_parsing_one_argument(char **av, size_t *array_count)
+int	*ft_parse_one_argument(char **av, size_t *array_count)
 {
 	char **input;
 	int	*nbrs;
@@ -79,7 +79,7 @@ size_t	ft_input_count(const char *str, char c)
 			++n;
 			while (str[i] != '\0' && str[i] != c)
 			{
-				if (str[i] != c && (str[i] < '0' || str[i] > '9'))
+				if (str[i] != c && str[i] != '-' && (str[i] < '0' || str[i] > '9'))
 					break ;
 				++i;
 			}

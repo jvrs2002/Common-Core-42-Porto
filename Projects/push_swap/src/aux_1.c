@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:15:51 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/17 16:22:38 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/19 15:41:22 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,29 @@ void	ft_print_list(t_data **head)
 		temp = temp->next;
 	} while (temp != *head);
 	printf("\n");
+}
+
+int	*ft_copy_to_array(int *nbrs, t_data *head, size_t *size)
+{
+	size_t	i;
+	t_data	*node;
+
+	i = 0;
+	if (!head || !size || *size == 0)
+		return (NULL);
+	if(nbrs)
+		free(nbrs);
+	nbrs = (int *)malloc(sizeof(int) * (*size));
+	if (!nbrs)
+		return (NULL);
+	node = head;
+	while (i < *size)
+	{
+		nbrs[i] = node->number;
+		node = node->next;
+		++i;
+		if (node == head)
+			break;
+	}
+	return (nbrs);
 }
