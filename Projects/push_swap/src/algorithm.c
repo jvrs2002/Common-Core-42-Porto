@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 10:12:20 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/19 16:08:55 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/23 14:14:16 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,14 @@ int	ft_calc_median (int *nbrs_sorted, size_t container_size)
 int	*ft_median_pb(t_data **head_a, t_data **head_b, t_container *container, int *nbrs)
 {
 	int	median;
-	int	*nbrs_sorted;
 	size_t	i;
 	size_t	*size_a;
 	size_t	*size_b;
 
 	size_a = &container->size_a_checkpoint;
 	size_b = &container->size_b_checkpoint;
-	nbrs_sorted = ft_bubble_sort(nbrs, *size_a);
 	i = 0;
-	median = ft_calc_median(nbrs_sorted, *size_a);
+	median = ft_calc_median(ft_bubble_sort(nbrs, *size_a), *size_a);
 	printf("median: %i\n", median);
 	if ((*container).size_a_checkpoint > 3)
 	{
@@ -87,46 +85,49 @@ int	*ft_median_pb(t_data **head_a, t_data **head_b, t_container *container, int 
 			}
 		}
 	}
-	nbrs_sorted = ft_copy_to_array(nbrs_sorted, *head_b, size_b);
-	return (nbrs_sorted);
+	if ((*container).size_a_checkpoint > 3)
+		return (ft_copy_to_array(ft_bubble_sort(nbrs, *size_a), *head_a, size_a));
+	else
+		return (ft_copy_to_array(ft_bubble_sort(nbrs, *size_a), *head_b, size_b));
 }
 
 int	*ft_median_pa(t_data **head_a, t_data **head_b, t_container *container, int *nbrs)
 {
 	int	median;
-	int	*nbrs_sorted;
 	size_t	i;
 	size_t	*size_a;
 	size_t	*size_b;
 
 	size_a = &container->size_a_checkpoint;
 	size_b = &container->size_b_checkpoint;
-	nbrs_sorted = ft_bubble_sort(nbrs, *size_b);
 	i = 0;
-	median = ft_calc_median(nbrs_sorted, *size_b);
+	median = ft_calc_median(ft_bubble_sort(nbrs, *size_b), *size_b);
 	printf("median: %i\n", median);
 	while (i < *size_b)
 	{
 		if ((*head_b)->number > median)
+		{
 			ft_pa(head_a, head_b, size_a, size_b);
+			if ((*head_a)->number > (*head_a)->next->number)
+				ft_sa(head_a, 1);
+		}
 		else
 		{
 			ft_rb(head_b, 1);
 			++i;
 		}
 	}
-	nbrs_sorted = ft_copy_to_array(nbrs_sorted, *head_a, size_a);
-	return (nbrs_sorted);
+	return (ft_copy_to_array(ft_bubble_sort(nbrs, *size_b), *head_b, size_b));
 }
 
-void	ft_sort_a(t_data **head_a, size_t *size_a)
+int	*ft_sort_a(t_data **head_a, size_t *size_a, int *nbrs)
 {
 	t_data	*node;
 	t_data	*second_node;
 	t_data	*third_node;
 
 	if (*size_a < 2)
-		return;
+		return (NULL);
 	node = (*head_a);
 	second_node = node->next;
 	if (*size_a == 3)
@@ -140,9 +141,10 @@ void	ft_sort_a(t_data **head_a, size_t *size_a)
 			ft_ra(head_a, 1);
 		if (node->number > second_node->number)
 			ft_sa(head_a, 1);
-		node = (*head_a);
+		node = *head_a;
 		second_node = node->next;
 		if (*size_a == 3)
 			third_node = second_node->next;
 	}
+	return (ft_copy_to_array(ft_bubble_sort(nbrs, *size_a), *head_a, size_a));
 }
