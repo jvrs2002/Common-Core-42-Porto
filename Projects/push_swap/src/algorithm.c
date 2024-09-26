@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 10:12:20 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/23 14:14:16 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/26 13:43:36 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	ft_calc_median (int *nbrs_sorted, size_t container_size)
 	return (median);
 }
 
-int	*ft_median_pb(t_data **head_a, t_data **head_b, t_container *container, int *nbrs)
+void	ft_median_pb(t_data **head_a, t_data **head_b, t_container *container, int *nbrs)
 {
 	int	median;
 	size_t	i;
@@ -85,13 +85,9 @@ int	*ft_median_pb(t_data **head_a, t_data **head_b, t_container *container, int 
 			}
 		}
 	}
-	if ((*container).size_a_checkpoint > 3)
-		return (ft_copy_to_array(ft_bubble_sort(nbrs, *size_a), *head_a, size_a));
-	else
-		return (ft_copy_to_array(ft_bubble_sort(nbrs, *size_a), *head_b, size_b));
 }
 
-int	*ft_median_pa(t_data **head_a, t_data **head_b, t_container *container, int *nbrs)
+void	ft_median_pa(t_data **head_a, t_data **head_b, t_container *container, int *nbrs)
 {
 	int	median;
 	size_t	i;
@@ -117,17 +113,16 @@ int	*ft_median_pa(t_data **head_a, t_data **head_b, t_container *container, int 
 			++i;
 		}
 	}
-	return (ft_copy_to_array(ft_bubble_sort(nbrs, *size_b), *head_b, size_b));
 }
 
-int	*ft_sort_a(t_data **head_a, size_t *size_a, int *nbrs)
+void	ft_first_sort_a(t_data **head_a, size_t *size_a)
 {
 	t_data	*node;
 	t_data	*second_node;
 	t_data	*third_node;
 
 	if (*size_a < 2)
-		return (NULL);
+		return ;
 	node = (*head_a);
 	second_node = node->next;
 	if (*size_a == 3)
@@ -146,5 +141,16 @@ int	*ft_sort_a(t_data **head_a, size_t *size_a, int *nbrs)
 		if (*size_a == 3)
 			third_node = second_node->next;
 	}
-	return (ft_copy_to_array(ft_bubble_sort(nbrs, *size_a), *head_a, size_a));
+}
+
+void	ft_check_sorted(int *nbrs, size_t *size_a)
+{
+	size_t	i;
+	int	*nbrs_sorted;
+
+	i = *size_a;
+	nbrs_sorted = ft_bubble_sort(nbrs, *size_a);
+
+	while (nbrs[*size_a] == nbrs_sorted[*size_a])
+		--(*size_a);
 }

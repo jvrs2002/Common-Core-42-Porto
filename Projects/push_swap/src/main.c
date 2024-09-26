@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 11:43:30 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/23 15:07:57 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/09/26 13:57:12 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,16 @@ int	main(int ac, char **av)
 		return(write(1, "Error\n", 7));
 	ft_init_container(&container.head_a, nbrs, array_count);
 	while(container.size_a_checkpoint > 3)
-		nbrs = ft_median_pb(&container.head_a, &container.head_b, &container, nbrs);
-	nbrs = ft_sort_a(&container.head_a, &container.size_a_checkpoint, nbrs);
+	{
+		ft_median_pb(&container.head_a, &container.head_b, &container, nbrs);
+		nbrs = ft_copy_to_array(ft_bubble_sort(nbrs, container.size_a_checkpoint), container.head_a, &container.size_a_checkpoint);
+	}
+	ft_first_sort_a(&container.head_a, &container.size_a_checkpoint);
 	while (container.size_b_checkpoint > 2)
-		nbrs = ft_median_pa(&container.head_a, &container.head_b, &container, nbrs);
+	{
+		nbrs = ft_copy_to_array(ft_bubble_sort(nbrs, container.size_b_checkpoint), container.head_b, &container.size_b_checkpoint);
+		ft_median_pa(&container.head_a, &container.head_b, &container, nbrs);
+	}
 	printf("size of a: %zu\n", container.size_a_checkpoint);
 	ft_print_list(&container.head_a);
 	write(1, "\n\n", 2);
