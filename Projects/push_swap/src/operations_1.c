@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:29:56 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/09/19 14:41:48 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/10/02 12:59:42 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ void	ft_pa(t_data **head_a, t_data **head_b, size_t *size_a, size_t *size_b)
 	ft_push(head_a, first_data_b);
 	++(*size_a);
 	--(*size_b);
+	if ((*head_a)->number > (*head_a)->next->number)
+		ft_sa(head_a, 1);
 	write(1, "pa\n", 3);
 }
 
