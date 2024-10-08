@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:15:51 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/10/02 15:31:30 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/10/08 15:22:30 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ int	*ft_copy_to_array(int *nbrs, t_data *head, size_t *size)
 	i = 0;
 	if (!head || !size || *size == 0)
 		return (NULL);
-	if(nbrs)
-		free(nbrs);
 	nbrs = (int *)malloc(sizeof(int) * (*size));
 	if (!nbrs)
 		return (NULL);

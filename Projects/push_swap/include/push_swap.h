@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 11:15:45 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/10/02 15:34:47 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/10/08 13:34:44 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ typedef struct s_container
 	t_data	*head_b;
 	size_t	size_a_checkpoint;
 	size_t	size_b_checkpoint;
-	size_t	chunk_size;
+	size_t	chunk_bigger;
+	size_t	chunk_smaller;
 }	t_container;
 
 int	ft_atoi(const char *src);
@@ -50,7 +51,7 @@ void	ft_free_list(t_data *head);
 int	ft_pop(t_data **head);
 void	ft_push(t_data **head, int data);
 void	ft_first_median_pb(t_data **head_a, t_data **head_b, t_container *container, int *nbrs);
-void	ft_median_pb(t_data **head_a, t_data **head_b, t_container *container, int *nbrs, int *unsorted);
+void	ft_median_pb(t_data **head_a, t_data **head_b, t_container *container, int *nbrs);
 void	ft_median_pa(t_data **head_a, t_data **head_b, t_container *container, int *nbrs);
 void	ft_first_sort_a(t_data **head_a, size_t *size_a);
 int	*ft_copy_to_array(int *nbrs, t_data *head, size_t *size);
@@ -66,7 +67,7 @@ void	ft_sa(t_data **head_a, int flag);
 void	ft_sb(t_data **head_b, int flag);
 void	ft_ss(t_data **head_a, t_data **head_b);
 int	*ft_bubble_sort(int *nbrs, size_t size_checkpoint);
-int	ft_calc_median (int *nbrs, size_t container_size);
+int	ft_calc_median (int *nbrs, size_t container_size, size_t chunk_size);
 int	ft_check_sorted(int *nbrs, size_t size_a, t_data **head_a);
 
 void	ft_print_list(t_data **head);
