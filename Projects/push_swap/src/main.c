@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 11:43:30 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/10/08 15:39:48 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/10/11 18:37:15 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ int	main(int ac, char **av)
 	container.head_a = NULL;
 	container.head_b = NULL;
 	container.size_b_checkpoint = 0;
-	container.chunk_bigger = 0;
-	container.chunk_smaller = 0;
+	container.chunk_count = 0;
 	array_count = ac - 1;
 	if (array_count == 1)
 		nbrs = ft_parse_one_argument(av, &array_count);

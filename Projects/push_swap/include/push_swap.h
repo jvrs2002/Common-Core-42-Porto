@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 11:15:45 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/10/08 13:34:44 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/10/11 18:37:16 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ typedef struct s_container
 	t_data	*head_b;
 	size_t	size_a_checkpoint;
 	size_t	size_b_checkpoint;
-	size_t	chunk_bigger;
-	size_t	chunk_smaller;
+	size_t	chunk_sizes[100];
+	size_t	chunk_count;
 }	t_container;
 
 int	ft_atoi(const char *src);

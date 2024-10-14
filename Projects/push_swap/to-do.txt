@@ -1,0 +1,5 @@
+-criar um array de int em que cada indice seja o numero do chunk de cada, pra isso tem que mudar a forma em que calculo o chunk size no first median pb;
+-criar um makefile;
+-verificar leaks de memoria;
+-formatar de acordo com a norminette;
+-pensar em formas de otimizar o tempo, se possivel mudando o bubble sort para outro algoritmo.

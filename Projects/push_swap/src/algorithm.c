@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 10:12:20 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/10/08 15:40:41 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/10/11 18:37:16 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	ft_first_median_pb(t_data **head_a, t_data **head_b, t_container *container
 	nbrs = ft_copy_to_array(nbrs, *head_a, &container->size_a_checkpoint);
 	median_1 = ft_calc_median(nbrs, *size_a, *size_a);
 	median_2 = ft_calc_median(nbrs, *size_a, *(size_a) / 2);
+	i = 0;
 	while (i < *size_a)
 	{
 		if ((*head_a)->number < median_1)
@@ -84,10 +85,10 @@ void	ft_first_median_pb(t_data **head_a, t_data **head_b, t_container *container
 			if ((*head_b)->number < median_2)
 			{
 				ft_rb(head_b, 1);
-				container->chunk_smaller += 1;
+				container->chunk_sizes[0] += 1;
 			}
 			else
-				container->chunk_bigger += 1;
+				container->chunk_sizes[1] += 1;
 		}
 		else
 		{
@@ -106,12 +107,14 @@ void	ft_median_pb(t_data **head_a, t_data **head_b, t_container *container, int 
 	size_t	median_1;
 	size_t	median_2;
 	size_t	i;
+	size_t	n;
 	size_t	*size_a;
 	size_t	*size_b;
 
-	size_t	*chunk_bigger = &container->chunk_bigger;
-
-	*chunk_bigger = 0;
+	container->chunk_count += 2;
+	n = container->chunk_count;
+	container->chunk_sizes[n] = 0;
+	container->chunk_sizes[n + 1] = 0;
 	size_a = &container->size_a_checkpoint;
 	size_b = &container->size_b_checkpoint;
 	i = 0;
@@ -126,8 +129,10 @@ void	ft_median_pb(t_data **head_a, t_data **head_b, t_container *container, int 
 			if ((*head_b)->number > median_2)
 			{
 				ft_rb(head_b, 1);
-				(*chunk_bigger)++;
+				container->chunk_sizes[n + 1] += 1;
 			}
+			else
+				container->chunk_sizes[n] += 1;
 		}
 		else
 		{
@@ -136,10 +141,12 @@ void	ft_median_pb(t_data **head_a, t_data **head_b, t_container *container, int 
 			++i;
 		}
 	}
-	while (*chunk_bigger > 0)
+	n = container->chunk_count;
+	i = container->chunk_sizes[n + 1];
+	while (i > 0)
 	{
 		ft_rrb(head_b, 1);
-		(*chunk_bigger)--;
+		i--;
 	}
 }
 
