@@ -6,32 +6,20 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 18:35:47 by joviribeiro       #+#    #+#             */
-/*   Updated: 2024/10/14 21:05:25 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/10/21 13:15:28 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
-#include <signal.h>
-#include <limits.h>
+#include "minitalk.h"
 
-static int	g_receiver = 0;
+extern int	g_receiver;
 
-void	signal_handler(int signum, siginfo_t *info, void *context)
+void	handle_server_signal(int signum, siginfo_t *info, void *context)
 {
-	static int	i = 0;
-
 	(void)info;
 	(void)context;
+	(void)signum;
 	g_receiver = 1;
-	if (signum == SIGUSR2)
-		++i;
-	else if (signum == SIGUSR1)
-	{
-		printf("Number of bytes received: %i", (i / 8));
-		i = 0;
-	}
-
 }
 
 void	send_signal(char c, int pid)
@@ -53,10 +41,10 @@ void	send_signal(char c, int pid)
 			if (n == 50)
 			{
 				printf("No response from server");
-				exit(1);
+				return ;
 			}
 			++n;
-			usleep(100);
+			usleep(WAIT_TIME_MS);
 		}
 		g_receiver = 0;
 	}
@@ -65,21 +53,24 @@ void	send_signal(char c, int pid)
 int	main(int ac, char **av)
 {
 	size_t	i;
-	int		pid;
+	int		server_pid;
 	char	*str;
-	struct sigaction_sa;
+	struct sigaction sa;
 
 	if (ac != 3)
-	{
-		printf("ERROR: More than two arguments");
-		return (1);
-	}
+		return (printf("ERROR: Expected usage: ./client <server_pid> <message>\n"));
 	i = 0;
-	pid = ft_atoi(av[1]);
+	server_pid = ft_atoi(av[1]);
 	str = av[2];
+	memset(&sa, 0, sizeof(sa));
+	sa.sa_sigaction = handle_server_signal;
+	sa.sa_flags = SA_SIGINFO;
+	if (sigaction(SIGUSR1, &sa, NULL) == -1)
+		return(printf("Error SIGUSR1"));
+	if (sigaction(SIGUSR2, &sa, NULL) == -1)
+		return(printf("Error SIGUSR2"));
 	while (str[i] != '\0')
-	{
-		send_signal(str[i], pid);
-		++i;
-	}
+		send_signal(str[i++], server_pid);
+	send_signal('\0', server_pid);
+	printf("Message sent to the server successfully");
 }
