@@ -6,11 +6,13 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 18:36:39 by joao-vri          #+#    #+#             */
-/*   Updated: 2024/10/22 14:12:16 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/10/22 16:32:24 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "../include/minitalk.h"
+#include <stdlib.h>
+
 
 void	receive_signal_int(int signum, int *len)
 {
@@ -28,24 +30,27 @@ void	receive_signal_char(int signum, char *c)
 		*c <<= 1;
 }
 
-void	handle_client_signal(int signum, siginfo_t *info, void *context, char *str)
+void	handle_client_signal(int signum, siginfo_t *info, void *context)
 {
 	static int	bit = 0;
 	static int	i = 0;
 	static int	client_pid = 0;
 	static char	c = 0;
 	static int	len = 0;
+	static char	*str = NULL;
 
 	if (client_pid == 0)
 		client_pid = info->si_pid;
 	if (len == 0)
 	{
-		while (bit < 32)
+		receive_signal_int(signum, &len);
+		if (++bit == 32)
 		{
-			receive_signal_int(signum, &len);
-			++bit;
+			bit = 0;
+			str = malloc(len + 1);
+			if (!str)
+				return ;
 		}
-		bit = 0;
 	}
 	else
 	{
@@ -55,10 +60,12 @@ void	handle_client_signal(int signum, siginfo_t *info, void *context, char *str)
 			bit = 0;
 			if (!c)
 			{
-				kill(client_pid, SIGUSR1); 
+				str[i] = '\0';
+				kill(client_pid, SIGUSR1);
+				free(str);
 				client_pid = 0;
 				len = 0;
-				printf("%s", str);
+				printf("%s\n", str);
 				return ;
 			}
 			str[i++] = c;

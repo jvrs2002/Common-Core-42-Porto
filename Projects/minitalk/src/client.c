@@ -6,13 +6,14 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 18:35:47 by joviribeiro       #+#    #+#             */
-/*   Updated: 2024/10/22 13:40:52 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/10/22 16:34:29 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "../include/minitalk.h"
+#include <stdlib.h>
 
-extern int	g_receiver;
+static int	g_receiver = 0;
 
 void	handle_server_signal(int signum, siginfo_t *info, void *context)
 {
@@ -92,10 +93,10 @@ int	main(int ac, char **av)
 	char	*str;
 	struct sigaction sa;
 
+	server_pid = atoi(av[1]);
 	if (ac != 3)
 		return(printf("ERROR: Expected usage: ./client <Server PID: %i> <message>\n", server_pid));
 	i = 0;
-	server_pid = ft_atoi(av[1]);
 	str = av[2];
 	memset(&sa, 0, sizeof(sa));
 	sa.sa_sigaction = handle_server_signal;
