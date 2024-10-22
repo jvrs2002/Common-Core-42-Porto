@@ -6,7 +6,7 @@
 /*   By: joao-vri <joao-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 18:35:47 by joviribeiro       #+#    #+#             */
-/*   Updated: 2024/10/21 15:25:46 by joao-vri         ###   ########.fr       */
+/*   Updated: 2024/10/22 13:40:52 by joao-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,36 @@ void	send_signal(char c, int pid)
 	}
 }
 
+void	send_length(char *str, int pid)
+{
+	size_t	i;
+	size_t	n;
+	size_t	c;
+
+	n = 0;
+	i = 32;
+	c = strlen(str);
+	while (i-- > 0)
+	{
+		n = 0;
+		if ((c >> i) & 1)
+			kill(pid, SIGUSR1);
+		else
+			kill(pid, SIGUSR2);
+		while (g_receiver == 0)
+		{
+			if (n == 50)
+			{
+				printf("No response from server");
+				return ;
+			}
+			++n;
+			usleep(WAIT_TIME_MS);
+		}
+		g_receiver = 0;
+	}
+}
+
 int	main(int ac, char **av)
 {
 	size_t	i;
@@ -63,10 +93,7 @@ int	main(int ac, char **av)
 	struct sigaction sa;
 
 	if (ac != 3)
-	{
-		printf("ERROR: Expected usage: ./client <Server PID: %i> <message>\n", server_pid);
-		return (1);
-	}
+		return(printf("ERROR: Expected usage: ./client <Server PID: %i> <message>\n", server_pid));
 	i = 0;
 	server_pid = ft_atoi(av[1]);
 	str = av[2];
@@ -77,6 +104,7 @@ int	main(int ac, char **av)
 		return(printf("Error SIGUSR1"));
 	if (sigaction(SIGUSR2, &sa, NULL) == -1)
 		return(printf("Error SIGUSR2"));
+	send_length(str, server_pid);
 	while (str[i] != '\0')
 		send_signal(str[i++], server_pid);
 	send_signal('\0', server_pid);
