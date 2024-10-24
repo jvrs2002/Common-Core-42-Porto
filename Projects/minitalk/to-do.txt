@@ -1,8 +1,0 @@
--Get PID (server)
--Print PID (server)
--Parse (client)
--Convert to binary (client)
--Malloc string (server)
--Send binary message (client to server)
--Print message (server)
--
