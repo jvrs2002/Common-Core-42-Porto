@@ -1,5 +1,6 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Iinclude -Ilibs/ft_printf -Ilibs/Libft
+CFLAGS = -Wall -Wextra -Werror
+INCLUDE = -I include
 
 CLIENT = client
 SERVER = server
@@ -11,68 +12,65 @@ SERVER_SRC = src/server.c
 CLIENT_BONUS_SRC = src/client_bonus.c
 SERVER_BONUS_SRC = src/server_bonus.c
 
-CLIENT_OBJ = $(CLIENT_SRC:.c=.o)
-SERVER_OBJ = $(SERVER_SRC:.c=.o)
-CLIENT_BONUS_OBJ = $(CLIENT_BONUS_SRC:.c=.o)
-SERVER_BONUS_OBJ = $(SERVER_BONUS_SRC:.c=.o)
+OBJ_DIR = obj
+CLIENT_OBJ = $(OBJ_DIR)/client.o
+SERVER_OBJ = $(OBJ_DIR)/server.o
+CLIENT_BONUS_OBJ = $(OBJ_DIR)/client_bonus.o
+SERVER_BONUS_OBJ = $(OBJ_DIR)/server_bonus.o
 
-LIBFT = libs/Libft/libft.a
-FT_PRINTF = libs/ft_printf/ft_printf.a
-
-FT_PRINTF_SRC = $(wildcard libs/ft_printf/*.c)
-LIBFT_SRC = $(wildcard libs/Libft/*.c)
-
-FT_PRINTF_OBJ = $(FT_PRINTF_SRC:.c=.o)
-LIBFT_OBJ = $(LIBFT_SRC:.c=.o)
+PRINTF = libftprintf.a
+LIBFT = libft.a
+LIBS_DIR = libs
+PRINTF_PATH = $(LIBS_DIR)/ft_printf
+LIBFT_PATH = $(LIBS_DIR)/Libft
 
 all: $(CLIENT) $(SERVER)
 	@echo "All files compiled successfully"
+	
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
 
-$(LIBFT): $(LIBFT_OBJ)
-	@ar rcs $@ $^ 
-	@echo "Libft library created"
+$(OBJ_DIR)/%.o: src/%.c | $(OBJ_DIR)
+	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-$(FT_PRINTF): $(FT_PRINTF_OBJ)
-	@ar rcs $@ $^ 
-	@echo "ft_printf library created"
-
-$(CLIENT): $(CLIENT_OBJ) $(LIBFT) $(FT_PRINTF)
-	@$(CC) $(CFLAGS) -o $(CLIENT) $(CLIENT_OBJ) $(LIBFT) $(FT_PRINTF)
+client: $(CLIENT_OBJ)
+	@make -C $(PRINTF_PATH) > /dev/null
+	@make -C $(LIBFT_PATH) > /dev/null
+	@$(CC) $(CFLAGS) $(INCLUDE) $(CLIENT_OBJ) $(PRINTF_PATH)/$(PRINTF) $(LIBFT_PATH)/$(LIBFT) -o $(CLIENT)
 	@echo "Client compiled successfully"
 
-$(SERVER): $(SERVER_OBJ) $(LIBFT) $(FT_PRINTF)
-	@$(CC) $(CFLAGS) -o $(SERVER) $(SERVER_OBJ) $(LIBFT) $(FT_PRINTF)
+server: $(SERVER_OBJ)
+	@make -C $(PRINTF_PATH) > /dev/null
+	@make -C $(LIBFT_PATH) > /dev/null
+	@$(CC) $(CFLAGS) $(INCLUDE) $(SERVER_OBJ) $(PRINTF_PATH)/$(PRINTF) $(LIBFT_PATH)/$(LIBFT) -o $(SERVER)
 	@echo "Server compiled successfully"
 
 bonus: $(CLIENT_BONUS) $(SERVER_BONUS)
 
-$(CLIENT_BONUS): $(CLIENT_BONUS_OBJ) $(LIBFT) $(FT_PRINTF)
-	@$(CC) $(CFLAGS) -o $(CLIENT_BONUS) $(CLIENT_BONUS_OBJ) $(LIBFT) $(FT_PRINTF)
+client_bonus: $(CLIENT_BONUS_OBJ)
+	@make -C $(PRINTF_PATH) > /dev/null
+	@make -C $(LIBFT_PATH) > /dev/null
+	@$(CC) $(CFLAGS) $(INCLUDE) $(CLIENT_BONUS_OBJ) $(PRINTF_PATH)/$(PRINTF) $(LIBFT_PATH)/$(LIBFT) -o $(CLIENT_BONUS)
 	@echo "Client bonus compiled successfully"
 
-$(SERVER_BONUS): $(SERVER_BONUS_OBJ) $(LIBFT) $(FT_PRINTF)
-	@$(CC) $(CFLAGS) -o $(SERVER_BONUS) $(SERVER_BONUS_OBJ) $(LIBFT) $(FT_PRINTF)
+server_bonus: $(SERVER_BONUS_OBJ)
+	@make -C $(PRINTF_PATH) > /dev/null
+	@make -C $(LIBFT_PATH) > /dev/null
+	@$(CC) $(CFLAGS) $(INCLUDE) $(SERVER_BONUS_OBJ) $(PRINTF_PATH)/$(PRINTF) $(LIBFT_PATH)/$(LIBFT) -o $(SERVER_BONUS)
 	@echo "Server bonus compiled successfully"
 
-$(FT_PRINTF_OBJ): libs/ft_printf/%.o: libs/ft_printf/%.c
-	@$(CC) $(CFLAGS) -c $< -o $@
-
-$(LIBFT_OBJ): libs/Libft/%.o: libs/Libft/%.c
-	@$(CC) $(CFLAGS) -c $< -o $@
-
-%.o: %.c
-	@$(CC) $(CFLAGS) -c $< -o $@
-
 clean:
-	@rm -f $(CLIENT_OBJ) $(SERVER_OBJ) $(LIBFT_OBJ) $(FT_PRINTF_OBJ) $(CLIENT_BONUS_OBJ) $(SERVER_BONUS_OBJ)
+	@rm -rf $(OBJ_DIR)
 	@echo "Object files cleaned"
 
 fclean: clean
-	@rm -f $(CLIENT) $(SERVER) $(LIBFT) $(FT_PRINTF) $(CLIENT_BONUS) $(SERVER_BONUS)
+	@rm -f $(CLIENT) $(SERVER) $(CLIENT_BONUS) $(SERVER_BONUS)
+	@make -C $(PRINTF_PATH) fclean > /dev/null
+	@make -C $(LIBFT_PATH) fclean > /dev/null
 	@echo "Executables and libraries cleaned"
 
 re: fclean all
 
 rebonus: fclean bonus
 
-.PHONY: all clean fclean re bonus rebonus
+.PHONY: all client server clean fclean re bonus client_bonus server_bonus rebonus

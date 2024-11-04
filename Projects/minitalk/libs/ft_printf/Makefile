@@ -11,16 +11,16 @@ CC = gcc
 all: $(NAME)
 
 $(NAME): $(OFILES)
-	ar rcs $(NAME) $(OFILES)
+	@ar rcs $(NAME) $(OFILES)
 
 %.o: %.c
-	$(CC) -c $(CFLAGS) $<
+	@$(CC) -c $(CFLAGS) $<
 
 clean:
-	rm -rf $(OFILES)
+	@rm -rf $(OFILES)
 
 fclean: clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 	
 re: fclean all
 

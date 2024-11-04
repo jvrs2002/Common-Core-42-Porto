@@ -15,19 +15,19 @@ CC = gcc
 all: $(NAME)
 
 $(NAME): $(OFILES)
-	ar rcs $(NAME) $(OFILES)
+	@ar rcs $(NAME) $(OFILES)
 
 bonus: $(OFILES) $(BOFILES)
-	ar rcs $(NAME) $(OFILES) $(BOFILES)
+	@ar rcs $(NAME) $(OFILES) $(BOFILES)
 
 %.o: %.c
-	$(CC) -c $(CFLAGS) $<
+	@$(CC) -c $(CFLAGS) $<
 
 clean:
-	rm -rf $(OFILES) $(BOFILES)
+	@rm -rf $(OFILES) $(BOFILES)
 
 fclean: clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 	
 re: fclean all
 
